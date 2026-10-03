@@ -1,4 +1,4 @@
-const STUDY_DATA = {
+var STUDY_DATA = (typeof window !== 'undefined' ? window : globalThis).STUDY_DATA = {
   "topics": {
     "physics": [
       {

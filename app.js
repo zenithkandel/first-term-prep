@@ -45,12 +45,18 @@
   // INITIALIZATION
   // ==========================================
   function init() {
-    setupEventListeners();
-    updateProgressUI();
-    renderTopics();
-    renderExamMCQs();
-    setupRapidFire();
-    triggerMathRender();
+    try {
+      console.log('Exam Prep App initializing...');
+      setupEventListeners();
+      updateProgressUI();
+      renderTopics();
+      renderExamMCQs();
+      setupRapidFire();
+      triggerMathRender();
+      console.log('Exam Prep App ready.');
+    } catch (err) {
+      console.error('Initialization error in Exam Prep Dashboard:', err);
+    }
   }
 
   // ==========================================
@@ -676,6 +682,7 @@
   // ==========================================
   // KATEX FORMULA RENDERING HELPER
   // ==========================================
+  let katexRetries = 0;
   function triggerMathRender() {
     if (window.renderMathInElement) {
       try {
@@ -689,7 +696,8 @@
       } catch (err) {
         console.warn("KaTeX note:", err);
       }
-    } else {
+    } else if (katexRetries < 5) {
+      katexRetries++;
       setTimeout(triggerMathRender, 300);
     }
   }
