@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Class 12 Science — First-Term Exam Prep</title>
-  <meta name="description" content="Clean and minimal study dashboard for Class 12 Physics, Chemistry, and Biology based on past exam papers (2078–2083).">
+  <title>Exam Prep — Class 12 Science</title>
+  <meta name="description" content="Minimal black and white study dashboard for Class 12 Physics, Chemistry, Biology, and Maths based on past papers.">
   <link rel="stylesheet" href="style.css">
   
   <!-- KaTeX for formula rendering -->
@@ -14,216 +14,180 @@
 </head>
 <body>
 
-  <!-- Top Header -->
-  <header class="app-header">
-    <div class="header-inner">
-      <div class="brand">
-        <span class="brand-badge">CLASS 12</span>
-        <div>
-          <h1 class="brand-title">First-Term Exam Prep</h1>
-          <p class="brand-subtitle">Physics · Chemistry · Biology (2078–2083 Past Papers)</p>
-        </div>
+  <div class="app-layout">
+    
+    <!-- Left Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <h1 class="sidebar-logo">Exam prep</h1>
       </div>
 
-      <div class="header-controls">
-        <nav class="subject-filter-nav" aria-label="Subject Filter">
-          <button class="subject-tab-btn active" data-subject="all" id="btn-filter-all">All</button>
-          <button class="subject-tab-btn" data-subject="physics" id="btn-filter-physics">Physics</button>
-          <button class="subject-tab-btn" data-subject="chemistry" id="btn-filter-chemistry">Chemistry</button>
-          <button class="subject-tab-btn" data-subject="biology" id="btn-filter-biology">Biology</button>
-        </nav>
+      <nav class="sidebar-nav" aria-label="Subjects">
+        <button class="nav-item active" data-subject="all">All</button>
+        <button class="nav-item" data-subject="physics">Physics</button>
+        <button class="nav-item" data-subject="chemistry">Chemistry</button>
+        <button class="nav-item" data-subject="biology">Biology</button>
+        <button class="nav-item" data-subject="maths">Maths</button>
+      </nav>
 
-        <button class="icon-btn" id="theme-toggle-btn" title="Toggle Light/Dark Theme" aria-label="Toggle Theme">
-          <span id="theme-icon">☼</span>
-        </button>
-
-        <button class="icon-btn" id="reset-progress-btn" title="Reset Study Progress" aria-label="Reset Progress">
-          ↺
-        </button>
+      <div class="sidebar-bottom">
+        <button id="reset-progress-btn" class="text-link-btn" title="Reset all checked topics and answers">Reset progress</button>
       </div>
-    </div>
-  </header>
+    </aside>
 
-  <!-- Main Container -->
-  <main class="container">
+    <!-- Main Content Area -->
+    <main class="main-content">
+      
+      <!-- Top Bar with Progress / MCQs switcher in the top right -->
+      <header class="top-bar">
+        <div class="subject-header-title" id="page-subject-title">All Subjects</div>
 
-    <!-- ====================================================================
-         SECTION 1: TOPICS TO STUDY
-         ==================================================================== -->
-    <section class="section-wrapper" id="section-roadmap">
-      <div class="section-header-block">
-        <div class="section-title-wrap">
-          <span class="section-num">Section 1</span>
-          <h2 class="section-title">Topics to Study</h2>
-          <p class="section-desc">Ranked by how often questions appear in past exams. Check off topics as you finish revising them.</p>
+        <!-- Wireframe Segmented Switcher in Top Right -->
+        <div class="segmented-control" role="tablist" aria-label="View Switcher">
+          <button class="segment-btn active" id="tab-progress" role="tab" aria-selected="true">Progress</button>
+          <button class="segment-btn" id="tab-mcqs" role="tab" aria-selected="false">MCQs</button>
         </div>
+      </header>
 
-        <div class="topic-search-wrap">
-          <input type="text" id="topic-search-input" placeholder="Search topics, formulas, or concepts..." aria-label="Search topics">
-        </div>
-      </div>
+      <!-- Content Container -->
+      <div class="content-container">
 
-      <!-- Study Progress Card -->
-      <div class="progress-card">
-        <div class="progress-header-row">
-          <div class="progress-label-wrap">
-            <h3>Your Revision Progress</h3>
-            <p id="progress-detail-text">0 of 19 topics reviewed</p>
+        <!-- ============================================================
+             VIEW 1: PROGRESS (SECTION 1)
+             ============================================================ -->
+        <section id="view-progress" class="view-panel active">
+          
+          <!-- Progress Tracker Header -->
+          <div class="progress-section">
+            <div class="progress-info-row">
+              <span class="progress-label">Study Progress</span>
+              <span class="progress-numbers" id="progress-detail-text">0 of 22 topics completed (0%)</span>
+            </div>
+            
+            <div class="progress-bar-outline">
+              <div class="progress-bar-fill" id="progress-bar-fill"></div>
+            </div>
+
+            <div class="mini-counts-row">
+              <span id="stat-physics">Physics: 0/7</span>
+              <span class="dot-sep">•</span>
+              <span id="stat-chemistry">Chemistry: 0/6</span>
+              <span class="dot-sep">•</span>
+              <span id="stat-biology">Biology: 0/6</span>
+              <span class="dot-sep">•</span>
+              <span id="stat-maths">Maths: 0/3</span>
+            </div>
           </div>
-          <div class="progress-metric" id="progress-percentage">0%</div>
-        </div>
 
-        <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
-          <div class="progress-fill" id="progress-bar-fill"></div>
-        </div>
-
-        <div class="subject-mini-stats">
-          <div class="mini-stat-item">
-            <span class="mini-stat-title">Physics</span>
-            <span class="mini-stat-val" id="stat-physics">0 / 7 (0%)</span>
+          <!-- Search Filter -->
+          <div class="search-wrap">
+            <input type="text" id="topic-search-input" placeholder="Search topics, questions, or formulas..." aria-label="Search topics">
           </div>
-          <div class="mini-stat-item">
-            <span class="mini-stat-title">Chemistry</span>
-            <span class="mini-stat-val" id="stat-chemistry">0 / 6 (0%)</span>
+
+          <!-- Topics List (Sorted by exam repetition) -->
+          <div class="topics-list" id="topics-container">
+            <!-- Populated dynamically via app.js -->
           </div>
-          <div class="mini-stat-item">
-            <span class="mini-stat-title">Biology</span>
-            <span class="mini-stat-val" id="stat-biology">0 / 6 (0%)</span>
+
+        </section>
+
+        <!-- ============================================================
+             VIEW 2: MCQS (SECTION 2)
+             ============================================================ -->
+        <section id="view-mcqs" class="view-panel" style="display: none;">
+          
+          <!-- MCQs Sub-Type Switcher -->
+          <div class="mcq-subnav">
+            <button class="subnav-btn active" id="btn-sub-exam">1-Mark Exam Questions</button>
+            <button class="subnav-btn" id="btn-sub-rapid">Rapid-Fire Concept Check</button>
           </div>
-          <div class="mini-stat-item">
-            <span class="mini-stat-title">Most Repeated (5x+)</span>
-            <span class="mini-stat-val" id="stat-high-rep">0 / 11 Done</span>
+
+          <!-- TYPE 1: 1-Mark Exam MCQs -->
+          <div id="subview-exam-mcqs">
+            <div class="exam-mcq-toolbar">
+              <div class="mcq-score-display" id="exam-score-pill">Score: 0 / 0</div>
+              <button class="text-link-btn" id="reset-exam-mcqs-btn">Clear answers</button>
+            </div>
+
+            <div class="exam-mcq-list" id="exam-mcq-container">
+              <!-- Populated dynamically via app.js -->
+            </div>
           </div>
-        </div>
-      </div>
 
-      <!-- Topics List -->
-      <div class="topics-list" id="topics-container">
-        <!-- Rendered dynamically -->
-      </div>
-    </section>
-
-    <!-- ====================================================================
-         SECTION 2: PRACTICE QUESTIONS (2 TYPES OF MCQS)
-         ==================================================================== -->
-    <section class="section-wrapper" id="section-mcqs">
-      <div class="section-header-block">
-        <div class="section-title-wrap">
-          <span class="section-num">Section 2</span>
-          <h2 class="section-title">Practice Questions</h2>
-          <p class="section-desc">Two practice modes: real 1-mark exam questions and rapid-fire questions to clear up tricky concepts.</p>
-        </div>
-      </div>
-
-      <!-- Section 2 Mode Nav -->
-      <div class="mcq-mode-nav">
-        <button class="mcq-mode-btn active" id="btn-mode-exam" data-mode="exam">
-          1-Mark Exam Questions
-        </button>
-        <button class="mcq-mode-btn" id="btn-mode-rapid" data-mode="rapid">
-          Rapid-Fire Concept Check
-        </button>
-      </div>
-
-      <!-- Type 1: 1-Mark Exam MCQs -->
-      <div class="mcq-view" id="view-exam-mcqs">
-        <div class="mcq-filter-bar">
-          <div class="mcq-stats-pills">
-            <span class="stat-pill" id="exam-score-pill">Score: 0 / 0</span>
-            <span class="stat-pill" id="exam-accuracy-pill">Accuracy: --%</span>
-          </div>
-          <button class="btn-secondary" id="reset-exam-mcqs-btn">Clear My Answers</button>
-        </div>
-
-        <div class="exam-mcq-list" id="exam-mcq-container">
-          <!-- Rendered dynamically -->
-        </div>
-      </div>
-
-      <!-- Type 2: Rapid-Fire Concept Check -->
-      <div class="mcq-view" id="view-rapid-fire" style="display: none;">
-        <div class="rf-sub-header">
-          <span class="rf-sub-title">Quick questions on topics where students commonly lose marks:</span>
-          <div class="rf-view-switch">
-            <button class="btn-secondary active" id="rf-view-quiz-btn">Interactive Quiz</button>
-            <button class="btn-secondary" id="rf-view-list-btn">View All as List</button>
-          </div>
-        </div>
-
-        <!-- Quiz Arena -->
-        <div class="rapid-fire-arena" id="rapid-fire-box">
-          <div id="rf-active-content">
-            <div class="rf-top-bar">
-              <div class="rf-stats-row">
-                <span id="rf-counter">Question 1 of 18</span>
-                <span class="streak-tag" id="rf-streak-display">Streak: 0</span>
-              </div>
-              <div style="display: flex; gap: 8px;">
-                <button class="rf-timer-btn" id="rf-timer-toggle">15s Timer: Off</button>
-                <button class="btn-secondary" id="rf-shuffle-btn" style="padding: 4px 10px;">Shuffle</button>
+          <!-- TYPE 2: Rapid-Fire Concept Check -->
+          <div id="subview-rapid-fire" style="display: none;">
+            
+            <div class="rf-toolbar">
+              <span class="rf-helper-text">Quick questions covering common mistakes students make in exams:</span>
+              <div class="rf-view-toggle">
+                <button class="subnav-pill active" id="rf-view-quiz-btn">Quiz Mode</button>
+                <button class="subnav-pill" id="rf-view-list-btn">All Questions</button>
               </div>
             </div>
 
-            <!-- Concept Doubt Card -->
-            <div class="rf-trap-banner">
-              <div class="rf-trap-type">
-                <span id="rf-subject-tag">PHYSICS</span> · Common Doubt
+            <!-- Quiz Card -->
+            <div class="rf-quiz-card" id="rapid-fire-box">
+              <div id="rf-active-content">
+                <div class="rf-card-top">
+                  <span id="rf-counter" class="rf-counter">Question 1 of 20</span>
+                  <span id="rf-streak-display" class="rf-streak">Streak: 0</span>
+                </div>
+
+                <div class="rf-topic-row">
+                  <span class="badge-black" id="rf-subject-tag">PHYSICS</span>
+                  <span class="rf-topic-title" id="rf-trap-title">Loading topic...</span>
+                </div>
+
+                <div class="rf-confusion-box" id="rf-trap-confusion">
+                  Loading doubt...
+                </div>
+
+                <div class="rf-question-prompt" id="rf-question-prompt">
+                  Loading question...
+                </div>
+
+                <div class="rf-options-list" id="rf-options-list">
+                  <!-- Populated dynamically via app.js -->
+                </div>
+
+                <!-- Explanation Box -->
+                <div class="rf-feedback-card" id="rf-feedback" style="display: none;">
+                  <div class="feedback-block">
+                    <strong>Common mistake:</strong>
+                    <p id="rf-why-fail">...</p>
+                  </div>
+                  <div class="feedback-block" style="border-top: 1px solid #000; padding-top: 12px; margin-top: 12px;">
+                    <strong>What to remember:</strong>
+                    <p id="rf-golden-rule">...</p>
+                  </div>
+                </div>
+
+                <div class="rf-actions-row">
+                  <button class="wire-btn" id="rf-prev-btn" disabled>← Previous</button>
+                  <button class="solid-btn" id="rf-next-btn">Next Question →</button>
+                </div>
               </div>
-              <h3 class="rf-trap-title" id="rf-trap-title">Loading topic...</h3>
-              <p class="rf-trap-confusion" id="rf-trap-confusion">Loading question...</p>
-            </div>
 
-            <!-- Question Prompt -->
-            <div class="rf-question-text" id="rf-question-prompt">
-              Loading question...
-            </div>
-
-            <!-- Options -->
-            <div class="rf-options-container" id="rf-options-list">
-              <!-- Rendered dynamically -->
-            </div>
-
-            <!-- Feedback Box (Shows after answering) -->
-            <div class="rf-feedback-card" id="rf-feedback">
-              <div class="rf-fail-box">
-                <div class="rf-fail-title">Common mistake:</div>
-                <div class="rf-fail-content" id="rf-why-fail">...</div>
-              </div>
-
-              <div class="rf-rule-box">
-                <div class="rf-rule-title">What to remember:</div>
-                <div class="rf-rule-content" id="rf-golden-rule">...</div>
+              <div id="rf-empty-state" class="empty-state" style="display: none;">
+                No questions found for this subject.
               </div>
             </div>
 
-            <!-- Navigation controls -->
-            <div class="rf-nav-actions">
-              <button class="btn-secondary" id="rf-prev-btn" disabled>← Previous</button>
-              <button class="btn-primary" id="rf-next-btn">Next Question →</button>
+            <!-- Cheat Sheet / List View -->
+            <div class="rf-all-list" id="rf-all-traps-container" style="display: none;">
+              <!-- Populated dynamically via app.js -->
             </div>
+
           </div>
 
-          <div id="rf-empty-state" class="empty-state" style="display: none;">
-            No concept check questions available for this subject.
-          </div>
-        </div>
+        </section>
 
-        <!-- All Traps Cheat Sheet View -->
-        <div class="rf-all-traps-list" id="rf-all-traps-container" style="display: none;">
-          <!-- Rendered dynamically -->
-        </div>
       </div>
 
-    </section>
+    </main>
 
-  </main>
+  </div>
 
-  <footer class="app-footer">
-    <p>Class 12 Science First-Term Prep Dashboard</p>
-    <p style="margin-top: 4px; opacity: 0.7;">Based on past exam papers: 2078 Set 1, 2079 Set 2/B, 2080 Set A & B, 2081 Set A & B, 2082 Set A, and 2083 Hostel Test.</p>
-  </footer>
-
-  <!-- Scripts -->
   <script src="data.js"></script>
   <script src="app.js"></script>
 </body>
