@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KMC Class XII // First-Term Prep Dashboard</title>
+  <meta name="description" content="Minimal black-and-white exam preparation dashboard for KMC Class XII Science (Physics, Chemistry, Biology) based on past papers from 2078 to 2083.">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- KaTeX for crisp formula rendering -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <span class="brand-badge">KMC XII</span>
+        <div>
+          <h1 class="brand-title">FIRST-TERM EXAM REVISION</h1>
+          <p class="brand-subtitle">Physics • Chemistry • Biology (2078–2083 Past Papers)</p>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <nav class="subject-filter-nav" aria-label="Subject Filter">
+          <button class="subject-tab-btn active" data-subject="all" id="btn-filter-all">ALL</button>
+          <button class="subject-tab-btn" data-subject="physics" id="btn-filter-physics">PHYSICS</button>
+          <button class="subject-tab-btn" data-subject="chemistry" id="btn-filter-chemistry">CHEMISTRY</button>
+          <button class="subject-tab-btn" data-subject="biology" id="btn-filter-biology">BIOLOGY</button>
+        </nav>
+
+        <button class="icon-btn" id="theme-toggle-btn" title="Toggle Light/Dark Mode" aria-label="Toggle Theme">
+          <span id="theme-icon">☼</span>
+        </button>
+
+        <button class="icon-btn" id="reset-progress-btn" title="Reset Study Progress" aria-label="Reset Progress">
+          ↺
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Layout -->
+  <main class="container">
+
+    <!-- ====================================================================
+         SECTION 1: SYLLABUS & REPETITION ROADMAP
+         ==================================================================== -->
+    <section class="section-wrapper" id="section-roadmap">
+      <div class="section-header-block">
+        <div class="section-title-wrap">
+          <span class="section-num">01 // REPETITION ROADMAP</span>
+          <h2 class="section-title">High-Yield Topics & Question Bank</h2>
+          <p class="section-desc">Sorted by past exam repetition frequency. Expand any topic for verified model solutions.</p>
+        </div>
+
+        <div class="topic-search-wrap">
+          <input type="text" id="topic-search-input" placeholder="Filter topics or concepts..." style="background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-primary); padding: 8px 12px; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; width: 220px;">
+        </div>
+      </div>
+
+      <!-- Study Progress Overview Card -->
+      <div class="progress-card">
+        <div class="progress-header-row">
+          <div class="progress-label-wrap">
+            <h3>Syllabus Mastery Tracker</h3>
+            <p id="progress-detail-text">0 of 19 topics completed</p>
+          </div>
+          <div class="progress-metric" id="progress-percentage">0%</div>
+        </div>
+
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-bar-fill"></div>
+        </div>
+
+        <div class="subject-mini-stats">
+          <div class="mini-stat-item">
+            <span class="mini-stat-title">Physics Mastery</span>
+            <span class="mini-stat-val" id="stat-physics">0 / 7 Topics (0%)</span>
+          </div>
+          <div class="mini-stat-item">
+            <span class="mini-stat-title">Chemistry Mastery</span>
+            <span class="mini-stat-val" id="stat-chemistry">0 / 6 Topics (0%)</span>
+          </div>
+          <div class="mini-stat-item">
+            <span class="mini-stat-title">Biology Mastery</span>
+            <span class="mini-stat-val" id="stat-biology">0 / 6 Topics (0%)</span>
+          </div>
+          <div class="mini-stat-item">
+            <span class="mini-stat-title">Top 5x Repeated Topics</span>
+            <span class="mini-stat-val" id="stat-high-rep">0 / 11 Covered</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Topics List (Rendered dynamically) -->
+      <div class="topics-list" id="topics-container">
+        <!-- Rendered via app.js -->
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2: MCQS & RAPID-FIRE CONCEPT CLEARERS
+         ==================================================================== -->
+    <section class="section-wrapper" id="section-mcqs">
+      <div class="section-header-block">
+        <div class="section-title-wrap">
+          <span class="section-num">02 // MCQ & CONCEPT MASTERY</span>
+          <h2 class="section-title">Exam Practice & Confusion Busters</h2>
+          <p class="section-desc">Two distinct training modes: authentic 1-mark exam drill & rapid-fire concept clearers.</p>
+        </div>
+      </div>
+
+      <!-- Section 2 Sub-Nav: 2 Types of MCQs -->
+      <div class="mcq-mode-nav">
+        <button class="mcq-mode-btn active" id="btn-mode-exam" data-mode="exam">
+          <span>● TYPE 1: 1-MARK EXAM DRILL</span>
+        </button>
+        <button class="mcq-mode-btn" id="btn-mode-rapid" data-mode="rapid">
+          <span>⚡ TYPE 2: RAPID-FIRE CONFUSION BUSTERS</span>
+        </button>
+      </div>
+
+      <!-- SUB-SECTION 2A: Authentic 1-Mark Past Paper MCQs -->
+      <div class="mcq-view" id="view-exam-mcqs">
+        <div class="mcq-filter-bar">
+          <div class="mcq-stats-pills">
+            <span class="stat-pill" id="exam-score-pill">Score: 0 / 0</span>
+            <span class="stat-pill" id="exam-accuracy-pill">Accuracy: --%</span>
+          </div>
+          <button class="btn-secondary" id="reset-exam-mcqs-btn">Reset All Answers</button>
+        </div>
+
+        <div class="exam-mcq-list" id="exam-mcq-container">
+          <!-- Rendered via app.js -->
+        </div>
+      </div>
+
+      <!-- SUB-SECTION 2B: Rapid-Fire Concept Clearers -->
+      <div class="mcq-view" id="view-rapid-fire" style="display: none;">
+        <div class="rapid-fire-arena" id="rapid-fire-box">
+          
+          <div class="rf-top-bar">
+            <div class="rf-stats-row">
+              <span id="rf-counter">Question 1 of 18</span>
+              <span class="streak-tag" id="rf-streak-display">Streak: 0 🔥</span>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="rf-timer-btn" id="rf-timer-toggle">Timer: Off</button>
+              <button class="btn-secondary" id="rf-shuffle-btn" style="padding: 4px 10px;">Shuffle</button>
+            </div>
+          </div>
+
+          <!-- Trap & Confusion Alert Box -->
+          <div class="rf-trap-banner">
+            <div class="rf-trap-type">
+              <span>⚠ TRAP CONCEPT</span> • <span id="rf-subject-tag">PHYSICS</span>
+            </div>
+            <h3 class="rf-trap-title" id="rf-trap-title">Loading trap...</h3>
+            <p class="rf-trap-confusion" id="rf-trap-confusion">Loading confusion...</p>
+          </div>
+
+          <!-- Question Prompt -->
+          <div class="rf-question-text" id="rf-question-prompt">
+            Loading question...
+          </div>
+
+          <!-- Options -->
+          <div class="rf-options-container" id="rf-options-list">
+            <!-- Rendered dynamically -->
+          </div>
+
+          <!-- Feedback Box (Hidden until answered) -->
+          <div class="rf-feedback-card" id="rf-feedback">
+            <div class="rf-fail-box">
+              <div class="rf-fail-title">Why Students Fail This:</div>
+              <div class="rf-fail-content" id="rf-why-fail">...</div>
+            </div>
+
+            <div class="rf-rule-box">
+              <div class="rf-rule-title">The Golden Rule To Remember:</div>
+              <div class="rf-rule-content" id="rf-golden-rule">...</div>
+            </div>
+          </div>
+
+          <!-- Navigation controls -->
+          <div class="rf-nav-actions">
+            <button class="btn-secondary" id="rf-prev-btn" disabled>← Previous</button>
+            <button class="btn-primary" id="rf-next-btn">Next Trap →</button>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="app-footer">
+    <p>KMC Bagbazar Class XII Science • First-Term Exam Preparation Dashboard</p>
+    <p style="margin-top: 4px; opacity: 0.7;">Verified against Examination Papers: 2078 Set 1, 2079 Set 2/B, 2080 Set A & B, 2081 Set A & B, 2082 Set A, 2083 Hostel Test</p>
+  </footer>
+
+  <!-- App Logic Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
