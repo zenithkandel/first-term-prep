@@ -1,39 +1,36 @@
 /**
- * First-Term Exam Preparation Dashboard Logic
- * Minimal Black-and-White Dashboard for KMC Class XII
+ * Exam Preparation Dashboard Logic
+ * Minimal Black & White Layout for Physics, Chemistry, and Mathematics
  */
 
 (function () {
   'use strict';
 
-  // ==========================================
-  // STATE MANAGEMENT
-  // ==========================================
+  // State Management
   const STATE = {
-    currentSubject: 'all', // 'all' | 'physics' | 'chemistry' | 'biology'
+    currentSubject: 'all', // 'all' | 'physics' | 'chemistry' | 'maths'
     searchQuery: '',
-    mcqMode: 'exam', // 'exam' | 'rapid'
-    theme: localStorage.getItem('kmc_prep_theme') || 'dark',
-    masteredTopics: new Set(JSON.parse(localStorage.getItem('kmc_prep_mastered') || '[]')),
-    examAnswers: JSON.parse(localStorage.getItem('kmc_prep_exam_answers') || '{}'),
+    mainTab: 'progress', // 'progress' | 'mcqs'
+    mcqType: 'exam', // 'exam' | 'rapid'
+    masteredTopics: new Set(JSON.parse(localStorage.getItem('prep_mastered_topics') || '[]')),
+    examAnswers: JSON.parse(localStorage.getItem('prep_exam_answers') || '{}'),
     
     // Rapid Fire state
     rapidFire: {
       items: [],
       currentIndex: 0,
       streak: 0,
-      timerActive: false,
-      timerSeconds: 15,
-      timerInterval: null,
       currentAnswered: false
     }
   };
 
+  const SUBJECT_KEYS = ['physics', 'chemistry', 'maths'];
+
   // Flatten and prepare topics list with subject references
   function getAllTopics() {
     const list = [];
-    ['physics', 'chemistry', 'biology'].forEach(sub => {
-      if (STUDY_DATA.topics[sub]) {
+    SUBJECT_KEYS.forEach(sub => {
+      if (STUDY_DATA.topics && STUDY_DATA.topics[sub]) {
         STUDY_DATA.topics[sub].forEach(t => {
           list.push({ ...t, subjectKey: sub });
         });
@@ -48,30 +45,12 @@
   // INITIALIZATION
   // ==========================================
   function init() {
-    applyTheme(STATE.theme);
     setupEventListeners();
     updateProgressUI();
     renderTopics();
     renderExamMCQs();
     setupRapidFire();
     triggerMathRender();
-  }
-
-  // ==========================================
-  // THEME MANAGEMENT
-  // ==========================================
-  function applyTheme(theme) {
-    STATE.theme = theme;
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('kmc_prep_theme', theme);
-    const icon = document.getElementById('theme-icon');
-    if (icon) {
-      icon.textContent = theme === 'dark' ? '☼' : '☽';
-    }
-  }
-
-  function toggleTheme() {
-    applyTheme(STATE.theme === 'dark' ? 'light' : 'dark');
   }
 
   // ==========================================
@@ -83,10 +62,10 @@
     } else {
       STATE.masteredTopics.add(topicId);
     }
-    localStorage.setItem('kmc_prep_mastered', JSON.stringify(Array.from(STATE.masteredTopics)));
+    localStorage.setItem('prep_mastered_topics', JSON.stringify(Array.from(STATE.masteredTopics)));
     updateProgressUI();
 
-    // Toggle card visual state
+    // Update card styling
     const card = document.getElementById(`topic-card-${topicId}`);
     if (card) {
       card.classList.toggle('mastered', STATE.masteredTopics.has(topicId));
@@ -99,39 +78,29 @@
     const masteredCount = Array.from(STATE.masteredTopics).filter(id => allTopics.some(t => t.id === id)).length;
     const pct = totalCount > 0 ? Math.round((masteredCount / totalCount) * 100) : 0;
 
-    // Main bar
+    // Progress bar
     const bar = document.getElementById('progress-bar-fill');
-    const pctLabel = document.getElementById('progress-percentage');
     const detailLabel = document.getElementById('progress-detail-text');
 
     if (bar) bar.style.width = `${pct}%`;
-    if (pctLabel) pctLabel.textContent = `${pct}%`;
-    if (detailLabel) detailLabel.textContent = `${masteredCount} of ${totalCount} topics reviewed`;
+    if (detailLabel) detailLabel.textContent = `${masteredCount} of ${totalCount} topics completed (${pct}%)`;
 
-    // Mini stats
-    const subs = ['physics', 'chemistry', 'biology'];
-    subs.forEach(s => {
-      const subTopics = STUDY_DATA.topics[s] || [];
+    // Mini subject counters
+    SUBJECT_KEYS.forEach(s => {
+      const subTopics = (STUDY_DATA.topics && STUDY_DATA.topics[s]) || [];
       const subMastered = subTopics.filter(t => STATE.masteredTopics.has(t.id)).length;
-      const subTotal = subTopics.length;
-      const subPct = subTotal > 0 ? Math.round((subMastered / subTotal) * 100) : 0;
       const el = document.getElementById(`stat-${s}`);
-      if (el) el.textContent = `${subMastered} / ${subTotal} (${subPct}%)`;
+      const prettyName = s === 'maths' ? 'Maths' : s.charAt(0).toUpperCase() + s.slice(1);
+      if (el) el.textContent = `${prettyName}: ${subMastered}/${subTopics.length}`;
     });
-
-    // High repetition (>= 5x)
-    const highRep = allTopics.filter(t => t.repetitionCount >= 5);
-    const highRepMastered = highRep.filter(t => STATE.masteredTopics.has(t.id)).length;
-    const elHigh = document.getElementById('stat-high-rep');
-    if (elHigh) elHigh.textContent = `${highRepMastered} / ${highRep.length} Done`;
   }
 
   function resetAllProgress() {
-    if (confirm("Reset your study progress? This will uncheck all mastered topics and clear MCQ history.")) {
+    if (confirm("Reset all study progress? This will uncheck all completed topics and clear MCQ attempts.")) {
       STATE.masteredTopics.clear();
       STATE.examAnswers = {};
-      localStorage.removeItem('kmc_prep_mastered');
-      localStorage.removeItem('kmc_prep_exam_answers');
+      localStorage.removeItem('prep_mastered_topics');
+      localStorage.removeItem('prep_exam_answers');
       updateProgressUI();
       renderTopics();
       renderExamMCQs();
@@ -139,7 +108,7 @@
   }
 
   // ==========================================
-  // SECTION 1: TOPIC ROADMAP RENDERING
+  // VIEW 1: TOPICS ROADMAP RENDERING
   // ==========================================
   function renderTopics() {
     const container = document.getElementById('topics-container');
@@ -163,61 +132,61 @@
     }
 
     if (topics.length === 0) {
-      container.innerHTML = `<div class="empty-state">No topics found matching your criteria.</div>`;
+      container.innerHTML = `<div class="empty-state">No topics found matching "${STATE.searchQuery}".</div>`;
       return;
     }
 
     container.innerHTML = topics.map((t, idx) => {
       const isMastered = STATE.masteredTopics.has(t.id);
-      const subjectName = t.subjectKey.charAt(0).toUpperCase() + t.subjectKey.slice(1);
+      const subjectName = t.subjectKey === 'maths' ? 'Maths' : t.subjectKey.charAt(0).toUpperCase() + t.subjectKey.slice(1);
 
       return `
         <article class="topic-card ${isMastered ? 'mastered' : ''}" id="topic-card-${t.id}">
-          <div class="topic-header">
-            <div class="topic-title-area">
-              <div class="topic-badges">
-                <span class="badge badge-rep">Repeated ${t.repetitionCount}x</span>
-                <span class="badge badge-subject">${subjectName}</span>
-                <span class="badge badge-weight">${t.weightage}</span>
+          <div class="topic-card-header">
+            <div style="flex: 1;">
+              <div class="topic-meta-left">
+                <span class="badge-solid">Repeated ${t.repetitionCount}x</span>
+                <span class="badge-outline">${subjectName}</span>
+                <span style="font-size: 0.8rem; font-weight: 600; color: #555;">${t.weightage}</span>
               </div>
-              <h3 class="topic-title">${t.title}</h3>
-              <div class="topic-years-list">
-                ${t.years.map(y => `<span class="year-chip">${y}</span>`).join('')}
+              <h3 class="topic-card-title">${t.title}</h3>
+              <div class="years-row">
+                ${t.years.map(y => `<span class="year-tag">${y}</span>`).join('')}
               </div>
             </div>
 
-            <label class="mastery-checkbox-label" title="Mark this topic as reviewed">
+            <label class="custom-checkbox-label" title="Mark this topic as reviewed">
               <input type="checkbox" ${isMastered ? 'checked' : ''} data-topic-id="${t.id}" class="mastery-checkbox">
-              <span>${isMastered ? 'Done ✓' : 'Mark as done'}</span>
+              <span>${isMastered ? 'Reviewed ✓' : 'Mark as reviewed'}</span>
             </label>
           </div>
 
-          <p class="topic-summary">${t.summary}</p>
+          <p class="topic-desc">${t.summary}</p>
 
-          <div class="key-concepts-box">
-            <div class="key-concepts-header">Key formulas and points:</div>
+          <div class="key-points-box">
+            <div class="key-points-title">Key points & formulas:</div>
             <ul>
               ${t.keyConcepts.map(c => `<li>${c}</li>`).join('')}
             </ul>
           </div>
 
           <!-- Collapsible Questions Accordion -->
-          <div class="questions-accordion">
-            <button class="accordion-toggle-btn" data-target="acc-${t.id}">
+          <div class="accordion-wrap">
+            <button class="accordion-toggle" data-target="acc-${t.id}">
               <span>Exam questions & answers (${t.questions ? t.questions.length : 0})</span>
-              <span class="accordion-arrow">▼</span>
+              <span class="accordion-icon">▼</span>
             </button>
-            <div class="accordion-content" id="acc-${t.id}">
+            <div class="accordion-body" id="acc-${t.id}">
               ${(t.questions || []).map(q => `
-                <div class="question-example-item">
-                  <div class="question-meta">
-                    <span class="q-type-badge">${q.type}</span>
-                    <span class="q-year-badge">Appeared in: ${q.year}</span>
+                <div class="example-question-card">
+                  <div class="example-q-meta">
+                    <span>${q.type}</span>
+                    <span>Appeared in: ${q.year}</span>
                   </div>
-                  <div class="q-text">${q.question}</div>
-                  <div class="q-answer-box">
-                    <div class="q-answer-title">Answer:</div>
-                    <div class="q-answer-text">${q.answer}</div>
+                  <div class="example-q-text">${q.question}</div>
+                  <div class="example-q-answer">
+                    <strong>Answer:</strong>
+                    <div>${q.answer}</div>
                   </div>
                 </div>
               `).join('')}
@@ -227,27 +196,27 @@
       `;
     }).join('');
 
-    // Attach listeners for mastery checkboxes and accordions
+    // Attach listeners for checkboxes and accordions
     container.querySelectorAll('.mastery-checkbox').forEach(cb => {
       cb.addEventListener('change', (e) => {
         const topicId = e.target.getAttribute('data-topic-id');
         toggleTopicMastery(topicId);
-        // update checkbox label text
         const span = e.target.parentElement.querySelector('span');
         if (span) {
-          span.textContent = e.target.checked ? 'Done ✓' : 'Mark as done';
+          span.textContent = e.target.checked ? 'Reviewed ✓' : 'Mark as reviewed';
         }
       });
     });
 
-    container.querySelectorAll('.accordion-toggle-btn').forEach(btn => {
+    container.querySelectorAll('.accordion-toggle').forEach(btn => {
       btn.addEventListener('click', () => {
         const targetId = btn.getAttribute('data-target');
         const content = document.getElementById(targetId);
         if (content) {
-          const isOpen = content.classList.contains('show');
-          content.classList.toggle('show', !isOpen);
-          btn.classList.toggle('open', !isOpen);
+          const isOpen = content.classList.contains('open');
+          content.classList.toggle('open', !isOpen);
+          const icon = btn.querySelector('.accordion-icon');
+          if (icon) icon.textContent = isOpen ? '▼' : '▲';
         }
       });
     });
@@ -256,7 +225,7 @@
   }
 
   // ==========================================
-  // SECTION 2A: AUTHENTIC 1-MARK EXAM MCQS
+  // VIEW 2A: 1-MARK EXAM MCQS
   // ==========================================
   function renderExamMCQs() {
     const container = document.getElementById('exam-mcq-container');
@@ -269,7 +238,7 @@
     }
 
     if (mcqs.length === 0) {
-      container.innerHTML = `<div class="empty-state">No exam MCQs available for this subject.</div>`;
+      container.innerHTML = `<div class="empty-state">No exam questions found for this subject.</div>`;
       updateExamScoreUI();
       return;
     }
@@ -279,53 +248,52 @@
       const hasAnswered = savedAnswer !== undefined;
 
       return `
-        <div class="mcq-item-card" id="mcq-card-${q.id}">
-          <div class="mcq-item-header">
-            <div class="topic-badges">
-              <span class="badge badge-subject">${q.subject}</span>
-              <span class="badge badge-weight">${q.topic}</span>
-              <span class="year-chip">${q.year}</span>
-            </div>
-            <span style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--text-muted);">Q${qIndex + 1}</span>
+        <div class="mcq-card" id="mcq-card-${q.id}">
+          <div class="mcq-meta">
+            <span class="badge-solid">${q.subject}</span>
+            <span class="badge-outline">${q.topic}</span>
+            <span style="font-size: 0.8rem; color: #555;">${q.year}</span>
           </div>
 
-          <div class="mcq-q-title">${q.question}</div>
+          <div class="mcq-prompt">${qIndex + 1}. ${q.question}</div>
 
-          <div class="mcq-options-grid" data-qid="${q.id}">
+          <div class="mcq-options-container" data-qid="${q.id}">
             ${q.options.map((opt, optIndex) => {
               const prefix = ['A', 'B', 'C', 'D'][optIndex];
               let extraClass = '';
               if (hasAnswered) {
                 if (optIndex === q.correct) {
-                  extraClass = 'selected-correct';
+                  extraClass = 'is-correct';
                 } else if (optIndex === savedAnswer) {
-                  extraClass = 'selected-wrong';
+                  extraClass = 'is-wrong';
                 }
               }
 
               return `
-                <button class="mcq-option-btn ${extraClass}" 
+                <button class="mcq-opt-button ${extraClass}" 
                         data-qid="${q.id}" 
                         data-opt-idx="${optIndex}" 
                         ${hasAnswered ? 'disabled' : ''}>
-                  <span class="opt-prefix">(${prefix})</span>
-                  <span class="opt-text">${opt}</span>
+                  <span style="font-weight: 700; min-width: 20px;">(${prefix})</span>
+                  <span>${opt}</span>
                 </button>
               `;
             }).join('')}
           </div>
 
-          <div class="mcq-explanation-box ${hasAnswered ? 'show' : ''}" id="expl-${q.id}">
-            <div class="mcq-explanation-header">Explanation:</div>
-            <div style="line-height: 1.55;">${q.explanation}</div>
-          </div>
+          ${hasAnswered ? `
+            <div class="mcq-explanation">
+              <strong>Explanation:</strong>
+              <div>${q.explanation}</div>
+            </div>
+          ` : `<div class="mcq-explanation" id="expl-${q.id}" style="display: none;"></div>`}
         </div>
       `;
     }).join('');
 
-    // Attach click listeners for option buttons
-    container.querySelectorAll('.mcq-option-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
+    // Attach click listeners for options
+    container.querySelectorAll('.mcq-opt-button').forEach(btn => {
+      btn.addEventListener('click', () => {
         const qid = btn.getAttribute('data-qid');
         const optIdx = parseInt(btn.getAttribute('data-opt-idx'), 10);
         handleExamOptionSelect(qid, optIdx);
@@ -341,23 +309,26 @@
     if (!question) return;
 
     STATE.examAnswers[qid] = selectedIdx;
-    localStorage.setItem('kmc_prep_exam_answers', JSON.stringify(STATE.examAnswers));
+    localStorage.setItem('prep_exam_answers', JSON.stringify(STATE.examAnswers));
 
     const card = document.getElementById(`mcq-card-${qid}`);
     if (!card) return;
 
-    const buttons = card.querySelectorAll('.mcq-option-btn');
+    const buttons = card.querySelectorAll('.mcq-opt-button');
     buttons.forEach((btn, idx) => {
       btn.disabled = true;
       if (idx === question.correct) {
-        btn.classList.add('selected-correct');
+        btn.classList.add('is-correct');
       } else if (idx === selectedIdx) {
-        btn.classList.add('selected-wrong');
+        btn.classList.add('is-wrong');
       }
     });
 
-    const expl = document.getElementById(`expl-${qid}`);
-    if (expl) expl.classList.add('show');
+    const expl = card.querySelector('.mcq-explanation');
+    if (expl) {
+      expl.innerHTML = `<strong>Explanation:</strong><div>${question.explanation}</div>`;
+      expl.style.display = 'block';
+    }
 
     updateExamScoreUI();
     triggerMathRender();
@@ -382,25 +353,19 @@
     });
 
     const scorePill = document.getElementById('exam-score-pill');
-    const accPill = document.getElementById('exam-accuracy-pill');
-
-    if (scorePill) scorePill.textContent = `Score: ${correct} / ${attempted} (Total: ${mcqs.length})`;
-    if (accPill) {
-      const pct = attempted > 0 ? Math.round((correct / attempted) * 100) : null;
-      accPill.textContent = pct !== null ? `Accuracy: ${pct}%` : 'Accuracy: --%';
-    }
+    if (scorePill) scorePill.textContent = `Score: ${correct} of ${attempted} (Total: ${mcqs.length})`;
   }
 
   function resetExamAnswers() {
-    if (confirm("Reset all exam MCQ answers?")) {
+    if (confirm("Clear your answers for these questions?")) {
       STATE.examAnswers = {};
-      localStorage.removeItem('kmc_prep_exam_answers');
+      localStorage.removeItem('prep_exam_answers');
       renderExamMCQs();
     }
   }
 
   // ==========================================
-  // SECTION 2B: RAPID-FIRE CONCEPT CLEARERS
+  // VIEW 2B: RAPID-FIRE CONCEPT CHECK
   // ==========================================
   function setupRapidFire() {
     let list = STUDY_DATA.mcqs.rapidFire || [];
@@ -432,35 +397,30 @@
     const item = list[STATE.rapidFire.currentIndex];
     STATE.rapidFire.currentAnswered = false;
 
-    // Update Counter & Streak
     const counter = document.getElementById('rf-counter');
     const streakEl = document.getElementById('rf-streak-display');
     if (counter) counter.textContent = `Question ${STATE.rapidFire.currentIndex + 1} of ${list.length}`;
     if (streakEl) streakEl.textContent = `Streak: ${STATE.rapidFire.streak}`;
 
-    // Subject tag
     const subTag = document.getElementById('rf-subject-tag');
     if (subTag) subTag.textContent = item.subject.toUpperCase();
 
-    // Trap & Confusion
     const trapTitle = document.getElementById('rf-trap-title');
     const trapConfusion = document.getElementById('rf-trap-confusion');
     if (trapTitle) trapTitle.textContent = item.trapTitle;
     if (trapConfusion) trapConfusion.textContent = `Common doubt: "${item.confusion}"`;
 
-    // Question
     const qPrompt = document.getElementById('rf-question-prompt');
     if (qPrompt) qPrompt.textContent = item.question;
 
-    // Options
     const optContainer = document.getElementById('rf-options-list');
     if (optContainer) {
       optContainer.innerHTML = item.options.map((opt, idx) => {
         const prefix = ['A', 'B', 'C', 'D'][idx];
         return `
-          <button class="mcq-option-btn rf-opt-btn" data-idx="${idx}">
-            <span class="opt-prefix">(${prefix})</span>
-            <span class="opt-text">${opt}</span>
+          <button class="mcq-opt-button rf-opt-btn" data-idx="${idx}">
+            <span style="font-weight: 700; min-width: 20px;">(${prefix})</span>
+            <span>${opt}</span>
           </button>
         `;
       }).join('');
@@ -473,21 +433,14 @@
       });
     }
 
-    // Hide feedback card
     const feedbackCard = document.getElementById('rf-feedback');
-    if (feedbackCard) feedbackCard.classList.remove('show');
+    if (feedbackCard) feedbackCard.style.display = 'none';
 
-    // Update Nav buttons
     const prevBtn = document.getElementById('rf-prev-btn');
     const nextBtn = document.getElementById('rf-next-btn');
     if (prevBtn) prevBtn.disabled = STATE.rapidFire.currentIndex === 0;
     if (nextBtn) {
       nextBtn.textContent = STATE.rapidFire.currentIndex === list.length - 1 ? 'Finish Quiz' : 'Next Question →';
-    }
-
-    // Timer reset if active
-    if (STATE.rapidFire.timerActive) {
-      startRapidTimer();
     }
 
     triggerMathRender();
@@ -496,13 +449,11 @@
   function handleRapidFireAnswer(selectedIdx) {
     if (STATE.rapidFire.currentAnswered) return;
     STATE.rapidFire.currentAnswered = true;
-    clearInterval(STATE.rapidFire.timerInterval);
 
     const item = STATE.rapidFire.items[STATE.rapidFire.currentIndex];
     const optButtons = document.querySelectorAll('.rf-opt-btn');
 
     const isCorrect = selectedIdx === item.correct;
-
     if (isCorrect) {
       STATE.rapidFire.streak++;
     } else {
@@ -515,20 +466,19 @@
     optButtons.forEach((btn, idx) => {
       btn.disabled = true;
       if (idx === item.correct) {
-        btn.classList.add('selected-correct');
+        btn.classList.add('is-correct');
       } else if (idx === selectedIdx) {
-        btn.classList.add('selected-wrong');
+        btn.classList.add('is-wrong');
       }
     });
 
-    // Populate and show feedback
     const failBox = document.getElementById('rf-why-fail');
     const ruleBox = document.getElementById('rf-golden-rule');
     const feedbackCard = document.getElementById('rf-feedback');
 
     if (failBox) failBox.textContent = item.whyStudentsFail;
     if (ruleBox) ruleBox.textContent = item.goldenRule;
-    if (feedbackCard) feedbackCard.classList.add('show');
+    if (feedbackCard) feedbackCard.style.display = 'block';
 
     triggerMathRender();
   }
@@ -539,7 +489,7 @@
       STATE.rapidFire.currentIndex++;
       renderRapidFireQuestion();
     } else {
-      alert(`Drill Complete! Final Streak: ${STATE.rapidFire.streak} 🔥`);
+      alert(`Quiz complete! Your final streak was ${STATE.rapidFire.streak}`);
       STATE.rapidFire.currentIndex = 0;
       renderRapidFireQuestion();
     }
@@ -552,49 +502,6 @@
     }
   }
 
-  function shuffleRapidQuestions() {
-    const list = [...STATE.rapidFire.items];
-    for (let i = list.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [list[i], list[j]] = [list[j], list[i]];
-    }
-    STATE.rapidFire.items = list;
-    STATE.rapidFire.currentIndex = 0;
-    STATE.rapidFire.streak = 0;
-    renderRapidFireQuestion();
-  }
-
-  function toggleRapidTimer() {
-    const btn = document.getElementById('rf-timer-toggle');
-    STATE.rapidFire.timerActive = !STATE.rapidFire.timerActive;
-    if (btn) {
-      btn.textContent = STATE.rapidFire.timerActive ? 'Timer: 15s (Active)' : 'Timer: Off';
-    }
-    if (STATE.rapidFire.timerActive) {
-      startRapidTimer();
-    } else {
-      clearInterval(STATE.rapidFire.timerInterval);
-    }
-  }
-
-  function startRapidTimer() {
-    clearInterval(STATE.rapidFire.timerInterval);
-    let timeLeft = 15;
-    const btn = document.getElementById('rf-timer-toggle');
-    if (btn) btn.textContent = `Timer: ${timeLeft}s`;
-
-    STATE.rapidFire.timerInterval = setInterval(() => {
-      timeLeft--;
-      if (btn) btn.textContent = `Timer: ${timeLeft}s`;
-      if (timeLeft <= 0) {
-        clearInterval(STATE.rapidFire.timerInterval);
-        if (!STATE.rapidFire.currentAnswered) {
-          handleRapidFireAnswer(-1); // timeout
-        }
-      }
-    }, 1000);
-  }
-
   function renderRapidFireCheatSheet() {
     const container = document.getElementById('rf-all-traps-container');
     if (!container) return;
@@ -605,35 +512,29 @@
     }
 
     if (list.length === 0) {
-      container.innerHTML = `<div class="empty-state">No traps found for this subject.</div>`;
+      container.innerHTML = `<div class="empty-state">No questions found for this subject.</div>`;
       return;
     }
 
     container.innerHTML = list.map((item, idx) => {
       const correctOpt = item.options[item.correct];
       return `
-        <div class="trap-card-item">
-          <div class="trap-card-header">
-            <div class="topic-badges">
-              <span class="badge badge-rep">TRAP #${idx + 1}</span>
-              <span class="badge badge-subject">${item.subject}</span>
-              <span class="badge badge-weight">${item.trapTitle}</span>
-            </div>
+        <div class="topic-card">
+          <div class="topic-meta-left">
+            <span class="badge-solid">Question #${idx + 1}</span>
+            <span class="badge-outline">${item.subject}</span>
+            <span style="font-weight: 700;">${item.trapTitle}</span>
           </div>
-          <div style="font-size: 0.88rem; font-style: italic; color: var(--text-secondary); margin-bottom: 8px;">
-            Common Misconception: "${item.confusion}"
+          <div style="font-size: 0.9rem; font-style: italic; color: #555; margin-bottom: 8px;">
+            Common doubt: "${item.confusion}"
           </div>
-          <div class="trap-card-q">Q: ${item.question}</div>
-          <div style="background: var(--bg-secondary); border: 1px solid var(--border-subtle); padding: 8px 12px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 12px;">
-            <strong style="color: var(--text-primary);">Correct Exam Answer:</strong> ${correctOpt}
+          <div style="font-weight: 600; margin-bottom: 12px; font-size: 0.98rem;">${item.question}</div>
+          <div style="border-left: 2px solid #000; padding-left: 12px; margin-bottom: 12px; font-size: 0.92rem;">
+            <strong>Correct Answer:</strong> ${correctOpt}
           </div>
-          <div class="rf-fail-box" style="margin-bottom: 10px;">
-            <div class="rf-fail-title">Why Students Fail This:</div>
-            <div class="rf-fail-content">${item.whyStudentsFail}</div>
-          </div>
-          <div class="rf-rule-box">
-            <div class="rf-rule-title">The Golden Rule To Remember:</div>
-            <div class="rf-rule-content">${item.goldenRule}</div>
+          <div style="background: #fafafa; border: 1px solid #ddd; padding: 12px; font-size: 0.9rem;">
+            <div><strong>Common mistake:</strong> ${item.whyStudentsFail}</div>
+            <div style="margin-top: 6px;"><strong>What to remember:</strong> ${item.goldenRule}</div>
           </div>
         </div>
       `;
@@ -646,20 +547,21 @@
   // EVENT LISTENERS
   // ==========================================
   function setupEventListeners() {
-    // Theme toggle
-    const themeBtn = document.getElementById('theme-toggle-btn');
-    if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
-
-    // Reset progress
-    const resetBtn = document.getElementById('reset-progress-btn');
-    if (resetBtn) resetBtn.addEventListener('click', resetAllProgress);
-
-    // Subject tabs
-    document.querySelectorAll('.subject-tab-btn').forEach(btn => {
+    // 1. Sidebar subject navigation
+    document.querySelectorAll('.sidebar-nav .nav-item').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.subject-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.sidebar-nav .nav-item').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         STATE.currentSubject = btn.getAttribute('data-subject');
+        
+        // Update top-bar title
+        const titleEl = document.getElementById('page-subject-title');
+        if (titleEl) {
+          if (STATE.currentSubject === 'all') titleEl.textContent = 'All Subjects';
+          else if (STATE.currentSubject === 'maths') titleEl.textContent = 'Mathematics';
+          else titleEl.textContent = STATE.currentSubject.charAt(0).toUpperCase() + STATE.currentSubject.slice(1);
+        }
+
         renderTopics();
         renderExamMCQs();
         setupRapidFire();
@@ -669,41 +571,60 @@
       });
     });
 
-    // Topic search
-    const searchInput = document.getElementById('topic-search-input');
-    if (searchInput) {
-      searchInput.addEventListener('input', (e) => {
-        STATE.searchQuery = e.target.value;
-        renderTopics();
+    // 2. Main View Switcher (Progress vs MCQs)
+    const tabProgress = document.getElementById('tab-progress');
+    const tabMCQs = document.getElementById('tab-mcqs');
+    const viewProgress = document.getElementById('view-progress');
+    const viewMCQs = document.getElementById('view-mcqs');
+
+    if (tabProgress && tabMCQs) {
+      tabProgress.addEventListener('click', () => {
+        tabProgress.classList.add('active');
+        tabProgress.setAttribute('aria-selected', 'true');
+        tabMCQs.classList.remove('active');
+        tabMCQs.setAttribute('aria-selected', 'false');
+        if (viewProgress) viewProgress.style.display = 'block';
+        if (viewMCQs) viewMCQs.style.display = 'none';
+        STATE.mainTab = 'progress';
+      });
+
+      tabMCQs.addEventListener('click', () => {
+        tabMCQs.classList.add('active');
+        tabMCQs.setAttribute('aria-selected', 'true');
+        tabProgress.classList.remove('active');
+        tabProgress.setAttribute('aria-selected', 'false');
+        if (viewProgress) viewProgress.style.display = 'none';
+        if (viewMCQs) viewMCQs.style.display = 'block';
+        STATE.mainTab = 'mcqs';
       });
     }
 
-    // MCQ Sub-mode toggles (Exam vs Rapid Fire)
-    const btnModeExam = document.getElementById('btn-mode-exam');
-    const btnModeRapid = document.getElementById('btn-mode-rapid');
-    const viewExam = document.getElementById('view-exam-mcqs');
-    const viewRapid = document.getElementById('view-rapid-fire');
+    // 3. MCQs Sub-Type Switcher (1-Mark Exam vs Rapid-Fire)
+    const btnSubExam = document.getElementById('btn-sub-exam');
+    const btnSubRapid = document.getElementById('btn-sub-rapid');
+    const subviewExam = document.getElementById('subview-exam-mcqs');
+    const subviewRapid = document.getElementById('subview-rapid-fire');
 
-    if (btnModeExam && btnModeRapid) {
-      btnModeExam.addEventListener('click', () => {
-        btnModeExam.classList.add('active');
-        btnModeRapid.classList.remove('active');
-        if (viewExam) viewExam.style.display = 'block';
-        if (viewRapid) viewRapid.style.display = 'none';
-        STATE.mcqMode = 'exam';
+    if (btnSubExam && btnSubRapid) {
+      btnSubExam.addEventListener('click', () => {
+        btnSubExam.classList.add('active');
+        btnSubRapid.classList.remove('active');
+        if (subviewExam) subviewExam.style.display = 'block';
+        if (subviewRapid) subviewRapid.style.display = 'none';
+        STATE.mcqType = 'exam';
       });
 
-      btnModeRapid.addEventListener('click', () => {
-        btnModeRapid.classList.add('active');
-        btnModeExam.classList.remove('active');
-        if (viewExam) viewExam.style.display = 'none';
-        if (viewRapid) viewRapid.style.display = 'block';
-        STATE.mcqMode = 'rapid';
+      btnSubRapid.addEventListener('click', () => {
+        btnSubRapid.classList.add('active');
+        btnSubExam.classList.remove('active');
+        if (subviewExam) subviewExam.style.display = 'none';
+        if (subviewRapid) subviewRapid.style.display = 'block';
+        STATE.mcqType = 'rapid';
         setupRapidFire();
       });
     }
 
-    // Rapid Fire View Toggles (Interactive Quiz vs All Traps List)
+    // 4. Rapid Fire Mode Switcher (Quiz vs List)
     const quizViewBtn = document.getElementById('rf-view-quiz-btn');
     const listViewBtn = document.getElementById('rf-view-list-btn');
     const quizBox = document.getElementById('rapid-fire-box');
@@ -728,22 +649,28 @@
       });
     }
 
-    // Reset exam answers button
+    // 5. Topic search input
+    const searchInput = document.getElementById('topic-search-input');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        STATE.searchQuery = e.target.value;
+        renderTopics();
+      });
+    }
+
+    // 6. Reset buttons
+    const resetProgressBtn = document.getElementById('reset-progress-btn');
+    if (resetProgressBtn) resetProgressBtn.addEventListener('click', resetAllProgress);
+
     const resetExamBtn = document.getElementById('reset-exam-mcqs-btn');
     if (resetExamBtn) resetExamBtn.addEventListener('click', resetExamAnswers);
 
-    // Rapid Fire controls
+    // 7. Rapid Fire navigation
     const nextBtn = document.getElementById('rf-next-btn');
     if (nextBtn) nextBtn.addEventListener('click', nextRapidQuestion);
 
     const prevBtn = document.getElementById('rf-prev-btn');
     if (prevBtn) prevBtn.addEventListener('click', prevRapidQuestion);
-
-    const shuffleBtn = document.getElementById('rf-shuffle-btn');
-    if (shuffleBtn) shuffleBtn.addEventListener('click', shuffleRapidQuestions);
-
-    const timerBtn = document.getElementById('rf-timer-toggle');
-    if (timerBtn) timerBtn.addEventListener('click', toggleRapidTimer);
   }
 
   // ==========================================
@@ -760,14 +687,14 @@
           throwOnError: false
         });
       } catch (err) {
-        console.warn("KaTeX rendering note:", err);
+        console.warn("KaTeX note:", err);
       }
     } else {
       setTimeout(triggerMathRender, 300);
     }
   }
 
-  // Run on DOM ready
+  // DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {

@@ -404,242 +404,185 @@ const STUDY_DATA = {
         ]
       }
     ],
-    "biology": [
-      {
-        "id": "bio-vasc",
-        "title": "Plant Anatomy & Vascular Bundles",
-        "repetitionCount": 3,
-        "years": [
-          "2081 Set B",
-          "2079 Set B",
-          "2078 Set 1"
-        ],
-        "weightage": "6 - 8 Marks",
-        "summary": "Classification of vascular bundles (Radial, Collateral open/closed, Bicollateral, Concentric: Amphicribal/Amphivasal), anatomy of dicot and monocot roots, xylem development (Exarch vs Endarch).",
-        "keyConcepts": [
-          "Radial: Xylem and phloem lie on separate alternate radii separated by non-conducting tissue. Universal characteristic of ROOTS.",
-          "Exarch Xylem: Protoxylem lies toward periphery and metaxylem toward the center (characteristic of roots). Endarch has protoxylem toward center (stems).",
-          "Concentric Bundles: One vascular tissue completely surrounds the other.\n- Amphicribal (Hadrocentric): Phloem completely surrounds central xylem (Ferns).\n- Amphivasal (Leptocentric): Xylem completely surrounds central phloem (Dracaena, Yucca).",
-          "Bicollateral: Phloem on both outer and inner sides of central xylem, separated by two cambium strips (Cucurbita / Cucurbitaceae)."
-        ],
-        "questions": [
-          {
-            "type": "Short Question [3M]",
-            "year": "2081 Set B & 2078 Set 1",
-            "question": "What is a vascular bundle? Describe the various types of vascular bundles with neat diagrams and examples.",
-            "answer": "A vascular bundle is a strand of conducting vessels consisting essentially of xylem (for water transport) and phloem (for food transport).\n1) Radial: Xylem and phloem occur in separate patches along different radii (e.g., Dicot and monocot roots).\n2) Conjoint Collateral:\n   - Open: Cambium present between outer phloem and inner xylem (e.g., Dicot stem, capable of secondary growth).\n   - Closed: Cambium is absent (e.g., Monocot stem, no secondary growth).\n3) Bicollateral: Outer phloem, outer cambium, central xylem, inner cambium, and inner phloem (e.g., Cucurbita).\n4) Concentric:\n   - Amphicribal: Central xylem surrounded by phloem (Fern rhizome).\n   - Amphivasal: Central phloem surrounded by xylem (Dracaena stem)."
-          }
-        ]
-      },
-      {
-        "id": "bio-tiss",
-        "title": "Plant & Animal Tissues (Histology)",
-        "repetitionCount": 3,
-        "years": [
-          "2081 Set B",
-          "2079 Set B",
-          "2078 Set 1"
-        ],
-        "weightage": "6 - 9 Marks",
-        "summary": "Meristematic vs permanent plant tissues (parenchyma, collenchyma, sclerenchyma), animal epithelial tissues (squamous, cuboidal, columnar, ciliated), connective tissue (bone vs cartilage, adipose), and neuron structure.",
-        "keyConcepts": [
-          "Plant Tissues: Parenchyma (living, thin-walled, isodiametric, intercellular spaces), Collenchyma (living, pectin thickenings at corners, flexible mechanical support), Sclerenchyma (dead, lignified thick walls).",
-          "Myelin Sheath Formation: Formed by Schwann cells in the Peripheral Nervous System (PNS), and by OLIGODENDROCYTES in the Central Nervous System (CNS)!",
-          "Bone vs Cartilage: Bone has hard, inflexible matrix containing ossein and calcium phosphate, rich blood supply, Haversian canals. Cartilage has flexible matrix containing chondrin, no blood vessels (avascular)."
-        ],
-        "questions": [
-          {
-            "type": "Short Question [4M]",
-            "year": "2079 Set B & 2078 Set 1",
-            "question": "Differentiate between: (a) Parenchyma and Collenchyma. (b) Bone and Cartilage.",
-            "answer": "(a) Parenchyma vs Collenchyma:\n- Parenchyma cells are uniformly thin-walled (cellulose) with abundant intercellular spaces, functioning primarily in photosynthesis and storage.\n- Collenchyma cells have localized cellulose and pectin thickening at cell corners, lack intercellular spaces, and provide tensile mechanical support to young growing stems and petioles.\n\n(b) Bone vs Cartilage:\n- Bone has a rigid, hard, non-pliable matrix impregnated with calcium salts and ossein protein, organized into Haversian systems with rich vascular supply.\n- Cartilage has a firm but pliable, semi-solid matrix containing chondrin protein, devoid of blood vessels and Haversian systems."
-          }
-        ]
-      },
-      {
-        "id": "bio-gen",
-        "title": "Genetics, DNA Replication & Genetic Code",
-        "repetitionCount": 3,
-        "years": [
-          "2081 Set B",
-          "2079 Set B",
-          "2078 Set 1"
-        ],
-        "weightage": "7 - 10 Marks",
-        "summary": "Semi-conservative DNA replication mechanism (Meselson-Stahl experiment), nucleotide structure vs nucleoside, properties of genetic code (triplet, commaless, universal, degenerate, unambiguous), and monohybrid crosses.",
-        "keyConcepts": [
-          "Properties of Genetic Code:\n- Triplet: Each codon consists of 3 nitrogenous bases.\n- Commaless: No punctuation between codons.\n- Degenerate: A single amino acid can be specified by multiple codons.\n- Universal: The same codon specifies the same amino acid in all organisms.\n- UNAMBIGUOUS: One specific codon codes for ONE and ONLY ONE amino acid (never ambiguous!).",
-          "Incomplete Dominance in Mirabilis jalapa: When red (RR) is crossed with white (rr), F1 is pink (Rr). In F2 generation, phenotypic ratio is 1 Red : 2 Pink : 1 White. If asked red:white:pink, the ratio is 1 : 1 : 2!",
-          "Semi-Conservative Replication: Each daughter DNA duplex retains one parental strand and synthesizes one new complementary strand (proven by Meselson and Stahl using 15N isotope)."
-        ],
-        "questions": [
-          {
-            "type": "Short Question [3M]",
-            "year": "2081 Set B & 2079 Set B",
-            "question": "Define genetic code. Mention any four major characteristics of the genetic code.",
-            "answer": "The genetic code is the sequence of nitrogenous bases in mRNA that dictates the specific sequence of amino acids during polypeptide protein synthesis.\n1) Triplet code: A group of three adjacent nitrogenous bases codes for one specific amino acid.\n2) Universal: The same codon codes for the exact same amino acid in all living organisms from bacteria to humans.\n3) Commaless: Read continuously from 5' to 3' without commas or skipping bases.\n4) Non-overlapping & Unambiguous: Adjacent codons do not overlap, and each particular codon codes for only one specific amino acid.\n5) Degenerate: Most amino acids are coded by more than one codon (61 sense codons for 20 amino acids)."
-          }
-        ]
-      },
-      {
-        "id": "bio-dig",
-        "title": "Human Digestive System & Enzyme Action",
-        "repetitionCount": 3,
-        "years": [
-          "2081 Set B",
-          "2079 Set B",
-          "2078 Set 1"
-        ],
-        "weightage": "6 - 9 Marks",
-        "summary": "Histology of alimentary canal, gastric secretion and regulation, digestion of proteins and carbohydrates, infant gastric juice (Prorennin, pepsinogen, gastric lipase), and protective role of Paneth cells.",
-        "keyConcepts": [
-          "Gastric Cells & Secretions:\n- Oxyntic / Parietal cells: Secrete HCl ($pH \\approx 1.5 - 2.0$) and Castle's Intrinsic Factor (for $B_{12}$ absorption).\n- Chief / Zymogen / Peptic cells: Secrete inactive proenzymes Pepsinogen and Prorennin.\n- Goblet / Mucous neck cells: Secrete protective alkaline mucus.",
-          "Infant Gastric Juice: Contains Pepsinogen, Rennin (Prorennin activated by HCl to curdle milk casein), and gastric lipase. Does NOT contain amylase or maltase!",
-          "Crypts of Lieberkühn: Paneth cells secrete antibacterial lysozyme to destroy bacterial cell walls in intestinal mucosa."
-        ],
-        "questions": [
-          {
-            "type": "Long Question [5M]",
-            "year": "2079 Set B & 2078 Set 1",
-            "question": "Describe the process of digestion of proteins in the human alimentary canal. Mention the enzymes involved, their site of secretion, and the final products.",
-            "answer": "1) In Stomach:\n- Gastric juice contains inactive Pepsinogen, activated by HCl to Pepsin.\n- $\\text{Proteins} \\xrightarrow{\\text{Pepsin}} \\text{Proteoses} + \\text{Peptones}$. In infants, Rennin curdles casein to calcium paracaseinate.\n2) In Small Intestine (Pancreatic juice):\n- Trypsinogen is activated by enterokinase into Trypsin, which then activates Chymotrypsinogen and Procarboxypeptidase.\n- $\\text{Proteins/Peptones} \\xrightarrow{\\text{Trypsin/Chymotrypsin}} \\text{Small Peptides}$.\n- Carboxypeptidase splits terminal peptide bonds from carboxyl end.\n3) In Small Intestine (Intestinal juice / Succus entericus):\n- Aminopeptidase and Dipeptidase cleave peptides into free Amino Acids."
-          }
-        ]
-      },
-      {
-        "id": "bio-water",
-        "title": "Plant Water Relations & Transpiration",
-        "repetitionCount": 2,
-        "years": [
-          "2081 Set B",
-          "2079 Set B"
-        ],
-        "weightage": "5 - 8 Marks",
-        "summary": "Diffusion Pressure Deficit (DPD), Osmotic Pressure (OP), Turgor Pressure (TP), Dixon & Joly's Cohesion-Tension theory of ascent of sap, and stomatal opening/closing mechanism.",
-        "keyConcepts": [
-          "DPD Formula: $DPD = OP - TP$.",
-          "Fully Turgid Cell: Inward water flow makes $TP = OP$. Therefore $DPD = OP - TP = 0$. No further net water intake!",
-          "Flaccid Cell: $TP = 0$, so $DPD = OP$. Cell has maximum suction capacity.",
-          "Ascent of Sap (Dixon & Joly): Cohesion between water molecules, adhesion to xylem tracheary walls, and transpiration pull created by continuous evaporation generate an uninterrupted unbroken water column."
-        ],
-        "questions": [
-          {
-            "type": "Long Question [5M]",
-            "year": "2079 Set B",
-            "question": "Who proposed the Transpiration Pull and Cohesion-Tension Theory? Explain the mechanism of upward movement of water and minerals with the help of this theory.",
-            "answer": "The Cohesion-Tension Theory was proposed by Dixon and Joly in 1894.\nKey Features:\n1) Continuous Water Column: Water forms an unbroken column within xylem vessels from roots to leaf mesophyll cells.\n2) Cohesive & Adhesive Forces: High mutual attraction between water molecules (cohesion via H-bonds) and attraction between water and xylem cell walls (adhesion) give high tensile strength preventing column rupture (cavitation).\n3) Transpiration Pull: Mesophyll cells lose water by transpiration, increasing their DPD and drawing water from adjoining xylem veins. This generates a massive negative hydrostatic suction pressure (pull) that pulls water upwards from roots."
-          }
-        ]
-      },
-      {
-        "id": "bio-frog",
-        "title": "Embryology of Frog & Reproduction",
-        "repetitionCount": 2,
-        "years": [
-          "2081 Set B",
-          "2079 Set B"
-        ],
-        "weightage": "4 - 6 Marks",
-        "summary": "Types of cleavage in frog (unequal holoblastic), prevention of polyspermy (fertilization membrane), coelom formation during organogenesis, and surgical contraception (vasectomy, tubectomy).",
-        "keyConcepts": [
-          "Frog Cleavage: Unequal and holoblastic due to moderate telolecithal yolk concentrated in the vegetal hemisphere. Cleavage furrows divide the entire egg, creating smaller micromeres at animal pole and larger macromeres at vegetal pole.",
-          "Polyspermy Prevention: Fast block (membrane depolarization) followed by slow block cortical reaction that elevates vitelline membrane into an impenetrable fertilization membrane.",
-          "Contraception: Vasectomy involves cutting and ligating the vas deferens in males; Tubectomy involves cutting and ligating Fallopian tubes in females."
-        ],
-        "questions": [
-          {
-            "type": "Short Question [3M]",
-            "year": "2081 Set B & 2079 Set B",
-            "question": "Describe the type of cleavage in frog's egg. What prevents polyspermy during fertilization?",
-            "answer": "Cleavage in frog's zygote is unequal and holoblastic. It is holoblastic because the cleavage furrow completely divides the entire egg from animal to vegetal pole. It is unequal because the heavy concentration of yolk in the vegetal hemisphere slows down cleavage, producing smaller cells (micromeres) at the animal pole and larger, yolk-laden cells (macromeres) at the vegetal pole. Polyspermy is prevented by two sequential blocks: (1) Fast electrical block where sperm entry causes instant depolarization of the egg plasma membrane. (2) Slow mechanical block where cortical granules release enzymes into the perivitelline space, lifting and hardening the vitelline membrane into a tough fertilization membrane."
-          }
-        ]
-      }
-    ],
     "maths": [
       {
-        "id": "math-der",
-        "title": "Derivatives & Applications (Tangents, Normals & Maxima/Minima)",
-        "repetitionCount": 5,
+        "id": "math-der-mvt",
+        "title": "Derivatives, Tangents & Mean Value Theorems (Rolle's & LMVT)",
+        "repetitionCount": 6,
         "years": [
-          "2083 Hostel",
-          "2082 Set A",
-          "2081 Set B",
-          "2080 Set A",
-          "2079 Set B"
+          "KMC 2079 Set A",
+          "KMC 2080 Set A",
+          "KMC 2081 Set B",
+          "KMC 2082 Set A",
+          "KMC 2083 Hostel"
         ],
-        "weightage": "8 - 10 Marks",
-        "summary": "Finding slope of tangents and normals, checking increasing/decreasing behavior, and finding local maximum and minimum values using derivative tests.",
+        "weightage": "12 - 16 Marks",
+        "summary": "First principle derivatives of inverse trigonometric functions, tangents and normals ($y - y_1 = m(x - x_1)$), angle between intersecting curves, and geometric conditions for Rolle's Theorem and Lagrange's Mean Value Theorem (LMVT).",
         "keyConcepts": [
-          "Slope of tangent at $(x_1, y_1)$ is $m = \\left(\\frac{dy}{dx}\\right)_{(x_1, y_1)}$. Slope of normal is $-1/m$.",
-          "Equation of tangent: $y - y_1 = m(x - x_1)$. Equation of normal: $y - y_1 = -\\frac{1}{m}(x - x_1)$.",
-          "Critical points: Solve $f'(x) = 0$. If $f''(x) > 0$, it is a local minimum. If $f''(x) < 0$, it is a local maximum.",
-          "Curves are perpendicular (orthogonal) if $m_1 \\times m_2 = -1$ at their intersection point."
-        ],
-        "questions": [
-          {
-            "type": "Short Question (2 Marks)",
-            "year": "2082 Set A & 2083 Hostel",
-            "question": "Find the slope of the tangent and the normal to the curve $y = x^3 - 3x + 2$ at the point where $x = 2$.",
-            "answer": "Step 1: Differentiate $y$ with respect to $x$:\n$\\frac{dy}{dx} = 3x^2 - 3$.\n\nStep 2: Find slope at $x = 2$:\n$m = 3(2)^2 - 3 = 12 - 3 = 9$.\n\nStep 3: Slope of normal:\n$m_{normal} = -\\frac{1}{m} = -\\frac{1}{9}$.\n\nAnswer: Tangent slope is $9$, normal slope is $-1/9$."
-          },
-          {
-            "type": "Long Question (4 Marks)",
-            "year": "2081 Set B & 2080 Set A",
-            "question": "Find the maximum and minimum values of $f(x) = 2x^3 - 9x^2 + 12x + 5$ on the interval $[0, 3]$.",
-            "answer": "Step 1: Differentiate:\n$f'(x) = 6x^2 - 18x + 12 = 6(x^2 - 3x + 2) = 6(x-1)(x-2)$.\n\nStep 2: Find critical points by setting $f'(x) = 0$:\n$x = 1$ and $x = 2$ (both lie in $[0, 3]$).\n\nStep 3: Evaluate $f(x)$ at critical points and boundaries:\n- $f(0) = 5$\n- $f(1) = 2(1) - 9(1) + 12(1) + 5 = 10$\n- $f(2) = 2(8) - 9(4) + 12(2) + 5 = 16 - 36 + 24 + 5 = 9$\n- $f(3) = 2(27) - 9(9) + 12(3) + 5 = 54 - 81 + 36 + 5 = 14$\n\nAnswer: Absolute maximum value is 14 (at $x = 3$) and absolute minimum value is 5 (at $x = 0$)."
-          }
-        ]
-      },
-      {
-        "id": "math-int",
-        "title": "Definite Integrals & Area Under Curves",
-        "repetitionCount": 4,
-        "years": [
-          "2082 Set A",
-          "2081 Set B",
-          "2080 Set B",
-          "2079 Set 2"
-        ],
-        "weightage": "6 - 8 Marks",
-        "summary": "Properties of definite integrals, standard substitutions, and calculating area between lines, parabolas, and circles.",
-        "keyConcepts": [
-          "King Property: $\\int_0^a f(x),dx = \\int_0^a f(a - x),dx$. Very useful for evaluating trigonometric integrals.",
-          "Odd/Even: If $f(-x) = -f(x)$ (odd), $\\int_{-a}^a f(x),dx = 0$. If $f(-x) = f(x)$ (even), $\\int_{-a}^a f(x),dx = 2\\int_0^a f(x),dx$.",
-          "Area between $y = f(x)$ and $x$-axis from $x = a$ to $x = b$: $\\text{Area} = \\int_a^b y,dx$."
+          "Derivative of Implicit Symmetry: If $x^p y^q = (x+y)^{p+q}$, then $\\frac{dy}{dx} = \\frac{y}{x}$ always, regardless of powers $p$ and $q$!",
+          "Tangents parallel to x-axis occur where slope $m = \\frac{dy}{dx} = 0$. Parallel to y-axis where $\\frac{dx}{dy} = 0$.",
+          "Angle between intersecting curves: Find slopes $m_1$ and $m_2$ at the intersection point. $\\tan\\theta = \\left|\\frac{m_1 - m_2}{1 + m_1 m_2}\\right|$. Orthogonal if $m_1 m_2 = -1$.",
+          "Rolle's Theorem: $f(x)$ must be (1) continuous on $[a, b]$, (2) differentiable on $(a, b)$, and (3) $f(a) = f(b)$. Then there exists at least one $c \\in (a, b)$ where $f'(c) = 0$.",
+          "Rolle's Trap: $f(x) = \\frac{1}{x^2-1}$ on $[-2, 2]$ has $f(-2) = f(2) = 1/3$, but Rolle's theorem CANNOT be applied because $f(x)$ is discontinuous at $x = \\pm 1$!"
         ],
         "questions": [
           {
             "type": "Short Question (3 Marks)",
-            "year": "2082 Set A & 2079 Set 2",
-            "question": "Evaluate $\\int_0^{\\pi/2} \\frac{\\sin x}{\\sin x + \\cos x},dx$.",
-            "answer": "Let $I = \\int_0^{\\pi/2} \\frac{\\sin x}{\\sin x + \\cos x},dx$ ... (1)\n\nBy property $\\int_0^a f(x),dx = \\int_0^a f(a-x),dx$:\n$I = \\int_0^{\\pi/2} \\frac{\\sin(\\pi/2 - x)}{\\sin(\\pi/2 - x) + \\cos(\\pi/2 - x)},dx = \\int_0^{\\pi/2} \\frac{\\cos x}{\\cos x + \\sin x},dx$ ... (2)\n\nAdding (1) and (2):\n$2I = \\int_0^{\\pi/2} \\frac{\\sin x + \\cos x}{\\sin x + \\cos x},dx = \\int_0^{\\pi/2} 1,dx = [x]_0^{\\pi/2} = \\frac{\\pi}{2}$.\n\nSo $I = \\frac{\\pi}{4}$."
+            "year": "KMC 2079 Set A",
+            "question": "Find from first principles the derivative of $\\ln(\\cos^{-1} x)$.",
+            "answer": "Let $y = \\ln(\\cos^{-1} x)$ and let $\\delta x$ produce increment $\\delta y$ in $y$:\n$y + \\delta y = \\ln(\\cos^{-1}(x + \\delta x))$.\n\nLet $u = \\cos^{-1} x \\implies x = \\cos u$, and $u + \\delta u = \\cos^{-1}(x + \\delta x) \\implies x + \\delta x = \\cos(u + \\delta u)$.\nSo $\\delta x = \\cos(u + \\delta u) - \\cos u = -2\\sin\\left(u + \\frac{\\delta u}{2}\\right)\\sin\\left(\\frac{\\delta u}{2}\\right)$.\nAs $\\delta x \\to 0$, $\\delta u \\to 0$.\n\n$\\frac{dy}{dx} = \\lim_{\\delta x \\to 0} \\frac{\\delta y}{\\delta x} = \\lim_{\\delta u \\to 0} \\frac{\\ln(u + \\delta u) - \\ln u}{\\delta u} \\times \\lim_{\\delta x \\to 0} \\frac{\\delta u}{\\delta x}$\n$= \\frac{1}{u} \\times \\lim_{\\delta u \\to 0} \\frac{\\delta u}{-2\\sin(u + \\delta u/2)\\sin(\\delta u/2)}$\n$= \\frac{1}{\\cos^{-1} x} \\times \\frac{-1}{\\sin u} = \\frac{-1}{\\cos^{-1} x \\cdot \\sqrt{1 - \\cos^2 u}} = -\\frac{1}{\\sqrt{1 - x^2}\\cos^{-1} x}$."
+          },
+          {
+            "type": "Long Question (4 Marks)",
+            "year": "KMC 2079 Set A & 2082 Set A",
+            "question": "State Rolle's theorem and give its geometrical interpretation. Is Rolle's theorem applicable to the function $f(x) = \\frac{1}{x^2 - 1}$ in the interval $[-2, 2]$? Justify your answer.",
+            "answer": "Statement: If a real-valued function $f(x)$ is:\n1) Continuous on the closed interval $[a, b]$,\n2) Differentiable on the open interval $(a, b)$, and\n3) $f(a) = f(b)$,\nthen there exists at least one point $c \\in (a, b)$ such that $f'(c) = 0$.\n\nGeometrical Interpretation: It means that between two points on a smooth continuous curve with equal heights, there is at least one point where the tangent line is completely horizontal (parallel to the x-axis).\n\nApplicability to $f(x) = \\frac{1}{x^2 - 1}$ on $[-2, 2]$:\nHere $f(-2) = \\frac{1}{4 - 1} = \\frac{1}{3}$ and $f(2) = \\frac{1}{4 - 1} = \\frac{1}{3}$, so $f(-2) = f(2)$.\nHowever, the denominator $x^2 - 1 = 0$ at $x = 1$ and $x = -1$, both of which lie strictly inside the interval $[-2, 2]$. Thus $f(x)$ is discontinuous and undefined at $x = \\pm 1$.\nSince the first hypothesis of continuity on $[-2, 2]$ fails, Rolle's theorem is NOT applicable."
+          },
+          {
+            "type": "Short Question (3 Marks)",
+            "year": "KMC 2079 Set A",
+            "question": "Find the angle of intersection of the curves $x^2 = y$ and $y^2 = x$.",
+            "answer": "Step 1: Find points of intersection:\nSubstitute $y = x^2$ into $y^2 = x \\implies (x^2)^2 = x \\implies x^4 - x = 0 \\implies x(x^3 - 1) = 0$.\nSo $x = 0$ (giving $(0, 0)$) and $x = 1$ (giving $(1, 1)$).\n\nStep 2: Find derivatives (slopes):\nFor $y = x^2$: $m_1 = \\frac{dy}{dx} = 2x$.\nFor $y^2 = x$: $2y\\frac{dy}{dx} = 1 \\implies m_2 = \\frac{dy}{dx} = \\frac{1}{2y}$.\n\nAt $(0, 0)$: $m_1 = 0$ (horizontal tangent) and $m_2 = \\infty$ (vertical tangent). Hence the curves intersect at right angle: $\\theta = 90^\\circ = \\frac{\\pi}{2}$.\n\nAt $(1, 1)$: $m_1 = 2(1) = 2$ and $m_2 = \\frac{1}{2(1)} = \\frac{1}{2}$.\n$\\tan\\theta = \\left|\\frac{m_1 - m_2}{1 + m_1 m_2}\\right| = \\left|\\frac{2 - 1/2}{1 + 2(1/2)}\\right| = \\left|\\frac{3/2}{2}\\right| = \\frac{3}{4} \\implies \\theta = \\tan^{-1}\\left(\\frac{3}{4}\\right)$."
           }
         ]
       },
       {
-        "id": "math-vec",
-        "title": "Vectors & 3D Geometry",
+        "id": "math-bin-ser",
+        "title": "Binomial Theorem & Exponential / Logarithmic Series",
+        "repetitionCount": 5,
+        "years": [
+          "KMC 2079 Set A",
+          "KMC 2080 Set B",
+          "KMC 2081 Set A",
+          "KMC 2082 Set A"
+        ],
+        "weightage": "8 - 12 Marks",
+        "summary": "General and middle terms in binomial expansion, properties of binomial coefficients, and summation of infinite exponential ($e$) and logarithmic ($\\ln$) series.",
+        "keyConcepts": [
+          "Middle Term of $(x - 1/x)^{2n}$: Since power is even $2n$, there is one middle term: $T_{n+1} = \\binom{2n}{n}x^{2n-n}(-1/x)^n = \\frac{1 \\cdot 3 \\cdot 5 \\dots (2n-1)}{n!}(-2)^n$.",
+          "Exponential Series: $e^x = 1 + \\frac{x}{1!} + \\frac{x^2}{2!} + \\dots$. So $\\frac{e + e^{-1}}{2} = 1 + \\frac{1}{2!} + \\frac{1}{4!} + \\dots$, and $\\frac{e - e^{-1}}{2} = \\frac{1}{1!} + \\frac{1}{3!} + \\frac{1}{5!} + \\dots$.",
+          "Ratio identity: $\\frac{1/2! + 1/4! + 1/6! + \\dots}{1/1! + 1/3! + 1/5! + \\dots} = \\frac{\\cosh(1) - 1}{\\sinh(1)} = \\frac{e - 1}{e + 1}$.",
+          "Logarithmic Series: $\\ln(1 + x) = x - \\frac{x^2}{2} + \\frac{x^3}{3} - \\dots$ for $|x| < 1$. Also $\\frac{1}{2}\\ln\\left(\\frac{1+x}{1-x}\\right) = x + \\frac{x^3}{3} + \\frac{x^5}{5} + \\dots$."
+        ],
+        "questions": [
+          {
+            "type": "Short Question (3 Marks)",
+            "year": "KMC 2079 Set A",
+            "question": "Show that $1 + \\frac{1+3}{2!} + \\frac{1+3+5}{3!} + \\dots = 2e$.",
+            "answer": "Step 1: Find the general $n^{\\text{th}}$ term $T_n$:\nThe numerator is the sum of first $n$ odd numbers: $1 + 3 + 5 + \\dots + (2n-1) = n^2$.\nThe denominator is $n!$.\nSo $T_n = \\frac{n^2}{n!} = \\frac{n(n-1) + n}{n!} = \\frac{n(n-1)}{n(n-1)(n-2)!} + \\frac{n}{n(n-1)!} = \\frac{1}{(n-2)!} + \\frac{1}{(n-1)!}$.\n\nStep 2: Sum from $n = 1$ to $\\infty$:\n$\\sum_{n=1}^\\infty T_n = \\sum_{n=2}^\\infty \\frac{1}{(n-2)!} + \\sum_{n=1}^\\infty \\frac{1}{(n-1)!}$\n$= \\left(1 + \\frac{1}{1!} + \\frac{1}{2!} + \\dots\\right) + \\left(1 + \\frac{1}{1!} + \\frac{1}{2!} + \\dots\\right) = e + e = 2e$."
+          },
+          {
+            "type": "Long Question (4 Marks)",
+            "year": "KMC 2079 Set A",
+            "question": "Show that the middle term in the expansion of $\\left(x - \\frac{1}{x}\\right)^{2n}$ is $\\frac{1 \\cdot 3 \\cdot 5 \\dots (2n-1)}{n!}(-2)^n$.",
+            "answer": "In the expansion of $\\left(x - \\frac{1}{x}\\right)^{2n}$, the index $2n$ is even. Hence the number of terms is $2n + 1$ (odd), and there is exactly one middle term, which is the $\\left(\\frac{2n}{2} + 1\\right)^{\\text{th}} = (n + 1)^{\\text{th}}$ term.\n\n$T_{n+1} = \\binom{2n}{n} x^{2n - n} \\left(-\\frac{1}{x}\\right)^n = \\binom{2n}{n} x^n \\frac{(-1)^n}{x^n} = (-1)^n \\frac{(2n)!}{n! \\, n!}$.\n\nExpand $(2n)! = [1 \\cdot 3 \\cdot 5 \\dots (2n-1)] \\times [2 \\cdot 4 \\cdot 6 \\dots 2n]$\n$= [1 \\cdot 3 \\cdot 5 \\dots (2n-1)] \\times 2^n [1 \\cdot 2 \\cdot 3 \\dots n] = [1 \\cdot 3 \\cdot 5 \\dots (2n-1)] \\times 2^n \\, n!$.\n\nSubstitute back:\n$T_{n+1} = (-1)^n \\frac{[1 \\cdot 3 \\cdot 5 \\dots (2n-1)] \\times 2^n \\, n!}{n! \\, n!} = \\frac{1 \\cdot 3 \\cdot 5 \\dots (2n-1)}{n!} (-2)^n$."
+          }
+        ]
+      },
+      {
+        "id": "math-3d-geom",
+        "title": "3D Geometry & Vectors (Planes, Direction Cosines & Lines)",
+        "repetitionCount": 5,
+        "years": [
+          "KMC 2079 Set A",
+          "KMC 2080 Set A",
+          "KMC 2081 Set A",
+          "KMC 2083 Hostel"
+        ],
+        "weightage": "8 - 12 Marks",
+        "summary": "Direction cosines ($l, m, n$) and direction ratios ($a, b, c$), angle between lines, equation of planes passing through given points or intercepts, and perpendicular distance from origin.",
+        "keyConcepts": [
+          "Direction Cosines: $l = \\cos\\alpha, m = \\cos\\beta, n = \\cos\\gamma$. Always satisfy $l^2 + m^2 + n^2 = 1$.",
+          "Line equally inclined to axes: $\\alpha = \\beta = \\gamma \\implies l = m = n$. Since $3l^2 = 1$, $l = m = n = \\pm \\frac{1}{\\sqrt{3}}$.",
+          "Angle between lines with d.r. $(a_1, b_1, c_1)$ and $(a_2, b_2, c_2)$: $\\cos\\theta = \\frac{a_1 a_2 + b_1 b_2 + c_1 c_2}{\\sqrt{a_1^2+b_1^2+c_1^2}\\sqrt{a_2^2+b_2^2+c_2^2}}$.",
+          "Plane with equal intercepts: $\\frac{x}{a} + \\frac{y}{a} + \\frac{z}{a} = 1 \\implies x + y + z = a$. Perpendicular distance from $(0, 0, 0)$ is $p = \\frac{|a|}{\\sqrt{1^2 + 1^2 + 1^2}} = \\frac{a}{\\sqrt{3}}$."
+        ],
+        "questions": [
+          {
+            "type": "Long Question (4 Marks)",
+            "year": "KMC 2079 Set A",
+            "question": "Find the equation of the plane which makes equal intercepts on the coordinate axes and passes through the point $(2, 3, 4)$. Also find the length of the perpendicular from the origin to this plane.",
+            "answer": "Step 1: Intercept form of plane equation:\nLet the equal intercepts on $x, y, z$ axes be $a$. Equation of the plane is:\n$\\frac{x}{a} + \\frac{y}{a} + \\frac{z}{a} = 1 \\implies x + y + z = a$.\n\nStep 2: Since it passes through $(2, 3, 4)$:\n$2 + 3 + 4 = a \\implies a = 9$.\nTherefore, equation of plane is $x + y + z = 9$ (or $x + y + z - 9 = 0$).\n\nStep 3: Length of perpendicular from origin $(0, 0, 0)$:\n$p = \\frac{|0 + 0 + 0 - 9|}{\\sqrt{1^2 + 1^2 + 1^2}} = \\frac{9}{\\sqrt{3}} = 3\\sqrt{3}$ units."
+          },
+          {
+            "type": "Short Question (2 Marks)",
+            "year": "KMC 2079 Set A",
+            "question": "Find the equation of the plane passing through $(1, 1, 0)$, $(-2, 2, -1)$, and $(1, 2, 1)$.",
+            "answer": "General equation of plane through $(x_1, y_1, z_1) = (1, 1, 0)$:\n$A(x - 1) + B(y - 1) + C(z - 0) = 0$ ... (1)\n\nPassing through $(-2, 2, -1)$:\n$A(-2 - 1) + B(2 - 1) + C(-1 - 0) = 0 \\implies -3A + B - C = 0$ ... (2)\n\nPassing through $(1, 2, 1)$:\n$A(1 - 1) + B(2 - 1) + C(1 - 0) = 0 \\implies 0A + B + C = 0 \\implies B = -C$ ... (3)\n\nFrom (2): $-3A - C - C = 0 \\implies -3A = 2C \\implies A = -\\frac{2}{3}C$.\n\nSubstitute into (1):\n$-\\frac{2}{3}C(x - 1) - C(y - 1) + C(z) = 0 \\implies -2(x - 1) - 3(y - 1) + 3z = 0$\n$-2x + 2 - 3y + 3 + 3z = 0 \\implies 2x + 3y - 3z - 5 = 0$."
+          }
+        ]
+      },
+      {
+        "id": "math-conics",
+        "title": "Conic Sections (Ellipse & Hyperbola)",
         "repetitionCount": 4,
         "years": [
-          "2083 Hostel",
-          "2082 Set A",
-          "2081 Set A",
-          "2078 Set 1"
+          "KMC 2079 Set A",
+          "KMC 2081 Set B",
+          "KMC 2082 Set A"
         ],
         "weightage": "6 - 8 Marks",
-        "summary": "Dot product, cross product, angle between lines, direction cosines, and shortest distance between skew lines.",
+        "summary": "Focus-directrix definition ($SP = e cdot PM$), condition for a line $y = mx + c$ to touch an ellipse ($c^2 = a^2 m^2 + b^2$), and standard equations of ellipse and hyperbola.",
         "keyConcepts": [
-          "Dot Product: $\\vec{a} \\cdot \\vec{b} = |a||b|\\cos\\theta$. Two vectors are perpendicular if $\\vec{a} \\cdot \\vec{b} = 0$.",
-          "Cross Product: $\\vec{a} \\times \\vec{b} = |a||b|\\sin\\theta\\,\\hat{n}$. Two vectors are parallel if $\\vec{a} \\times \\vec{b} = 0$.",
-          "Direction cosines: $l^2 + m^2 + n^2 = 1$."
+          "Conic Definition: Locus of point $P$ whose distance from focus $S$ bears a constant ratio $e$ (eccentricity) to distance from directrix $M$: $SP = e cdot PM$.",
+          "Eccentricity values: Parabola $e = 1$; Ellipse $0 < e < 1$; Hyperbola $e > 1$; Circle $e = 0$.",
+          "Condition for tangency to ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$: The line $y = mx + c$ is a tangent if and only if $c = \\pm\\sqrt{a^2 m^2 + b^2}$."
+        ],
+        "questions": [
+          {
+            "type": "Long Question (4 Marks)",
+            "year": "KMC 2079 Set A",
+            "question": "Find the equation of the ellipse whose focus is $(2, 5)$, directrix is $x + y = 1$, and eccentricity is $e = \\frac{2}{3}$.",
+            "answer": "Let $P(x, y)$ be any point on the ellipse.\nDistance from focus $S(2, 5)$:\n$SP = \\sqrt{(x - 2)^2 + (y - 5)^2} \\implies SP^2 = (x - 2)^2 + (y - 5)^2$.\n\nPerpendicular distance from directrix $x + y - 1 = 0$:\n$PM = \\frac{|x + y - 1|}{\\sqrt{1^2 + 1^2}} = \\frac{|x + y - 1|}{\\sqrt{2}} \\implies PM^2 = \\frac{(x + y - 1)^2}{2}$.\n\nBy definition of conic, $SP = e \\cdot PM \\implies SP^2 = e^2 \\cdot PM^2$:\n$(x - 2)^2 + (y - 5)^2 = \\left(\\frac{2}{3}\\right)^2 \\frac{(x + y - 1)^2}{2} = \\frac{4}{9} \\times \\frac{(x + y - 1)^2}{2} = \\frac{2}{9}(x + y - 1)^2$.\n\n$9[(x^2 - 4x + 4) + (y^2 - 10y + 25)] = 2[x^2 + y^2 + 1 + 2xy - 2x - 2y]$\n$9[x^2 + y^2 - 4x - 10y + 29] = 2x^2 + 2y^2 + 4xy - 4x - 4y + 2$\n$9x^2 + 9y^2 - 36x - 90y + 261 - 2x^2 - 2y^2 - 4xy + 4x + 4y - 2 = 0$\n$7x^2 - 4xy + 7y^2 - 32x - 86y + 259 = 0$."
+          }
+        ]
+      },
+      {
+        "id": "math-perm-comb",
+        "title": "Permutations & Combinations",
+        "repetitionCount": 4,
+        "years": [
+          "KMC 2079 Set A",
+          "KMC 2081 Set B",
+          "KMC 2082 Set A"
+        ],
+        "weightage": "5 - 7 Marks",
+        "summary": "Fundamental principle of counting, restricted permutations (vowels together / separate), committee selection under conditions, and relation between $P(n, r)$ and $C(n, r)$.",
+        "keyConcepts": [
+          "Relation: $P(n, r) = r! \\times C(n, r)$. Therefore $r! = \\frac{P(n, r)}{C(n, r)}$.",
+          "Numbers with distinct digits: For a 9-digit number, first digit cannot be 0 (9 choices: 1-9). The remaining 8 digits are chosen from the remaining 9 digits (including 0): $P(9, 8) = 9!$. Total = $9 \\times 9!$."
         ],
         "questions": [
           {
             "type": "Short Question (2 Marks)",
-            "year": "2083 Hostel & 2081 Set A",
-            "question": "Find the value of $\\lambda$ for which the vectors $\\vec{a} = 2\\hat{i} - \\hat{j} + \\hat{k}$ and $\\vec{b} = \\hat{i} + 2\\hat{j} - \\lambda\\hat{k}$ are perpendicular to each other.",
-            "answer": "For two vectors to be perpendicular, their dot product must be zero:\n$\\vec{a} \\cdot \\vec{b} = 0$\n$(2)(1) + (-1)(2) + (1)(-\\lambda) = 0$\n$2 - 2 - \\lambda = 0 \\implies -\\lambda = 0 \\implies \\lambda = 0$."
+            "year": "KMC 2079 Set A",
+            "question": "In how many ways can a committee of 8 members be selected from 8 gentlemen and 6 ladies if the committee is to include at most two ladies?",
+            "answer": "Total committee size = 8 members. 'At most two ladies' means 0 ladies, 1 lady, or 2 ladies:\n- Case 1: 0 Ladies and 8 Gentlemen: $\\binom{6}{0} \\times \\binom{8}{8} = 1 \\times 1 = 1$.\n- Case 2: 1 Lady and 7 Gentlemen: $\\binom{6}{1} \\times \\binom{8}{7} = 6 \\times 8 = 48$.\n- Case 3: 2 Ladies and 6 Gentlemen: $\\binom{6}{2} \\times \\binom{8}{6} = 15 \\times 28 = 420$.\n\nTotal number of ways = $1 + 48 + 420 = 469$ ways."
+          }
+        ]
+      },
+      {
+        "id": "math-integ",
+        "title": "Integration Techniques & Definite Integrals",
+        "repetitionCount": 4,
+        "years": [
+          "KMC 2079 Set A",
+          "KMC 2081 Set A",
+          "KMC 2082 Set A"
+        ],
+        "weightage": "6 - 8 Marks",
+        "summary": "Integration by substitution, integration by parts, relationship between differentiation and integration, and definite integral properties.",
+        "keyConcepts": [
+          "Fundamental Relationship: $\\int f'(x) [f(x)]^n dx = \\frac{[f(x)]^{n+1}}{n+1} + C$.",
+          "For $n = 1/2$: $\\int f'(x)\\sqrt{f(x)},dx = \\frac{2}{3}[f(x)]^{3/2} + C$.",
+          "Symmetric limit shortcut: If $f(x)$ is odd, $\\int_{-a}^a f(x)dx = 0$."
+        ],
+        "questions": [
+          {
+            "type": "Short Question (2 Marks)",
+            "year": "KMC 2079 Set A",
+            "question": "What is the relationship between differentiation and integration? Evaluate $\\int f'(x)\\sqrt{f(x)},dx$.",
+            "answer": "Relationship: Integration is the reverse process (anti-derivative) of differentiation. That is, if $\\frac{d}{dx}[F(x)] = f(x)$, then $\\int f(x),dx = F(x) + C$.\n\nEvaluation of $\\int f'(x)\\sqrt{f(x)},dx$:\nLet $u = f(x) \\implies du = f'(x),dx$.\n$\\int f'(x)\\sqrt{f(x)},dx = \\int \\sqrt{u},du = \\int u^{1/2},du = \\frac{u^{3/2}}{3/2} + C = \\frac{2}{3}[f(x)]^{3/2} + C$."
           }
         ]
       }
@@ -888,154 +831,124 @@ const STUDY_DATA = {
         "explanation": "During smelting of roasted copper pyrites in a reverberatory furnace, a heavy molten sulphide layer termed 'Matte' forms, containing approximately $45-50% Cu_2S$ and $FeS$."
       },
       {
-        "id": "bio-ex-1",
-        "subject": "Biology",
-        "topic": "Plant Anatomy",
-        "year": "KMC 2079 Set B",
-        "question": "Vascular bundles of a monocot root are characterized as:",
+        "id": "math-kmc-1",
+        "subject": "Maths",
+        "topic": "Logarithmic Series",
+        "year": "KMC 2079 Set A",
+        "question": "The sum of the infinite series $\\frac{1}{3} + \\frac{(1/3)^3}{3} + \\frac{(1/3)^5}{5} + \\dots$ up to $\\infty$ is:",
         "options": [
-          "Open, collateral, endarch",
-          "Radial with exarch xylem",
-          "Closed, collateral, endarch",
-          "Radial with endarch xylem"
+          "$\\ln 2$",
+          "$\\ln\\sqrt{2}$",
+          "$\\ln 3$",
+          "$2\\ln 2$"
         ],
         "correct": 1,
-        "explanation": "All roots possess radial vascular bundles (xylem and phloem on separate alternating radii) with exarch xylem (protoxylem facing outward towards the periphery, metaxylem towards the centre). Monocot roots are polyarch radial exarch."
+        "explanation": "Recall the standard logarithmic expansion: $\\frac{1}{2}\\ln\\left(\\frac{1+x}{1-x}\\right) = x + \\frac{x^3}{3} + \\frac{x^5}{5} + \\dots$. Putting $x = 1/3$: $\\frac{1+1/3}{1-1/3} = \\frac{4/3}{2/3} = 2$. Therefore, the sum is $\\frac{1}{2}\\ln 2 = \\ln(2^{1/2}) = \\ln\\sqrt{2}$."
       },
       {
-        "id": "bio-ex-2",
-        "subject": "Biology",
-        "topic": "Genetics & Molecular Biology",
-        "year": "KMC 2081 Set B",
-        "question": "When red and white flowered plants of Mirabilis jalapa are crossed, the phenotypic ratio of red : white : pink in the F2 generation is:",
+        "id": "math-kmc-2",
+        "subject": "Maths",
+        "topic": "Permutations & Combinations",
+        "year": "KMC 2079 Set A",
+        "question": "If $P(n, r) = 336$ and $C(n, r) = 56$, then the value of $n$ is:",
         "options": [
-          "1 : 2 : 1",
-          "2 : 1 : 1",
-          "1 : 1 : 2",
-          "3 : 1 : 0"
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correct": 1,
+        "explanation": "Since $P(n, r) = r! \\times C(n, r)$, we have $r! = \\frac{336}{56} = 6 \\implies r = 3$. Then $P(n, 3) = n(n-1)(n-2) = 336$. Factoring $336 = 8 \\times 7 \\times 6$, so $n = 8$."
+      },
+      {
+        "id": "math-kmc-3",
+        "subject": "Maths",
+        "topic": "Permutations",
+        "year": "KMC 2079 Set A",
+        "question": "The total number of 9-digit numbers which have all different digits is:",
+        "options": [
+          "$10!$",
+          "$9!$",
+          "$9 \\times 9!$",
+          "$10 \\times 10!$"
         ],
         "correct": 2,
-        "explanation": "Mirabilis jalapa displays incomplete dominance. Crossing red ($RR$) with white ($rr$) yields pink ($Rr$) in F1. In F2, the genotypic and phenotypic ratios are 1 Red ($RR$) : 2 Pink ($Rr$) : 1 White ($rr$). The question specifically asks for Red : White : Pink $\\implies$ 1 : 1 : 2!"
+        "explanation": "A 9-digit number cannot have 0 as its first digit. So there are 9 choices (1 to 9) for the first digit. The remaining 8 positions must be filled from the remaining 9 digits (including 0) without repetition, which can be done in $P(9, 8) = 9!$ ways. Total = $9 \\times 9!$."
       },
       {
-        "id": "bio-ex-3",
-        "subject": "Biology",
-        "topic": "Plant Water Relations",
-        "year": "KMC 2081 Set A",
-        "question": "When a plant cell becomes fully turgid, its Diffusion Pressure Deficit (DPD) is equal to:",
-        "options": [
-          "$OP$",
-          "0",
-          "$TP$",
-          "$OP + TP$"
-        ],
-        "correct": 1,
-        "explanation": "Diffusion Pressure Deficit $DPD = OP - TP$. When a cell is fully turgid, maximum endosmosis occurs until turgor pressure equals osmotic pressure ($TP = OP$). Hence, $DPD = OP - OP = 0$. The cell has zero suction capacity."
-      },
-      {
-        "id": "bio-ex-4",
-        "subject": "Biology",
-        "topic": "Infectious Diseases",
-        "year": "KMC 2081 Set B",
-        "question": "A very popular serological diagnostic test called the Widal test is employed for the detection of:",
-        "options": [
-          "Cholera",
-          "AIDS",
-          "Typhoid",
-          "Tuberculosis"
-        ],
-        "correct": 2,
-        "explanation": "The Widal test is an agglutination test specifically detecting serum antibodies against O (somatic) and H (flagellar) antigens of Salmonella typhi, the causative bacterium of Typhoid fever."
-      },
-      {
-        "id": "bio-ex-5",
-        "subject": "Biology",
-        "topic": "Embryology of Frog",
-        "year": "KMC 2081 Set A",
-        "question": "Due to the amount and distribution of yolk, cleavage in a frog's egg is:",
-        "options": [
-          "Equal and holoblastic",
-          "Unequal and holoblastic",
-          "Meroblastic and discoidal",
-          "Meroblastic and superficial"
-        ],
-        "correct": 1,
-        "explanation": "The frog's egg is mesolecithal and moderately telolecithal (moderate yolk concentrated at vegetal pole). Cleavage furrows pass through the entire egg (holoblastic), but the vegetal yolk retards division, producing unequal blastomeres (smaller micromeres at animal pole and larger macromeres at vegetal pole)."
-      },
-      {
-        "id": "bio-ex-6",
-        "subject": "Biology",
-        "topic": "Human Digestive System",
-        "year": "KMC 2081 Set A",
-        "question": "In infants feeding on mother's milk, the enzyme Prorennin is secreted by which gastric cells?",
-        "options": [
-          "Oxyntic cells",
-          "Zymogen (Chief) cells",
-          "Parietal cells",
-          "Goblet cells"
-        ],
-        "correct": 1,
-        "explanation": "Chief cells (zymogen or peptic cells) in the gastric glands secrete the inactive proenzymes pepsinogen and prorennin. Oxyntic/parietal cells secrete $HCl$ and intrinsic factor."
-      },
-      {
-        "id": "bio-ex-7",
-        "subject": "Biology",
-        "topic": "Animal Tissues",
-        "year": "KMC 2078 Set 1",
-        "question": "The myelin sheath around nerve fibers in the Central Nervous System (CNS) is produced and maintained by:",
-        "options": [
-          "Astrocytes",
-          "Microglia",
-          "Schwann cells",
-          "Oligodendrocytes"
-        ],
-        "correct": 3,
-        "explanation": "In the Central Nervous System (brain and spinal cord), myelin is synthesized by Oligodendrocytes. In the Peripheral Nervous System (PNS), myelin is produced by Schwann cells."
-      },
-      {
-        "id": "bio-ex-8",
-        "subject": "Biology",
-        "topic": "Excretion & Physiology",
-        "year": "KMC 2081 Set B",
-        "question": "Which of the following pairs of organism and primary nitrogenous excretory product is INCORRECT?",
-        "options": [
-          "Bony fishes - Ammonotelic",
-          "Whale - Ureotelic",
-          "Cartilaginous fishes - Ammonotelic",
-          "Pigeon - Uricotelic"
-        ],
-        "correct": 2,
-        "explanation": "Marine cartilaginous fishes (sharks and rays) retain urea in their blood for osmoregulation and are UREOTELIC, not ammonotelic. Bony fishes are ammonotelic, mammals (including whales) are ureotelic, and birds are uricotelic."
-      },
-      {
-        "id": "math-ex-1",
+        "id": "math-kmc-4",
         "subject": "Maths",
         "topic": "Derivatives",
-        "year": "KMC 2082 Set A",
-        "question": "The slope of the normal to the curve $y = 2x^2 + 3\\sin x$ at $x = 0$ is:",
+        "year": "KMC 2079 Set A",
+        "question": "If $x^4 \\cdot y^5 = (x + y)^9$, then $\\frac{dy}{dx}$ is equal to:",
         "options": [
-          "3",
-          "-1/3",
-          "1/3",
-          "-3"
+          "$\\frac{x}{y}$",
+          "$\\frac{y}{x}$",
+          "$-\\frac{y}{x}$",
+          "$\\left(\\frac{x}{y}\\right)^2$"
         ],
         "correct": 1,
-        "explanation": "Differentiating $y$: $dy/dx = 4x + 3\\cos x$. At $x = 0$, $dy/dx = 4(0) + 3\\cos(0) = 3$. This is the tangent slope. The slope of the normal is $-1/m = -1/3$."
+        "explanation": "For any homogeneous implicit relation of the form $x^p y^q = (x+y)^{p+q}$, taking logarithms gives $p\\ln x + q\\ln y = (p+q)\\ln(x+y)$. Differentiating both sides with respect to $x$ and simplifying always yields $\\frac{dy}{dx} = \\frac{y}{x}$."
       },
       {
-        "id": "math-ex-2",
+        "id": "math-kmc-5",
         "subject": "Maths",
-        "topic": "Definite Integrals",
-        "year": "KMC 2081 Set B",
-        "question": "The value of $\\int_{-1}^1 x^3\\sqrt{1 - x^2},dx$ is:",
+        "topic": "Conic Sections (Ellipse)",
+        "year": "KMC 2079 Set A",
+        "question": "The straight line $y = x + c$ touches the ellipse $\\frac{x^2}{3} + \\frac{y^2}{1} = 1$. The value of $c$ is:",
         "options": [
-          "1",
-          "0",
-          "\\pi/2",
-          "2"
+          "$\\pm 1$",
+          "$\\pm 2$",
+          "$\\pm 3$",
+          "$\\pm 4$"
         ],
         "correct": 1,
-        "explanation": "Let $f(x) = x^3\\sqrt{1 - x^2}$. Checking for symmetry: $f(-x) = (-x)^3\\sqrt{1 - (-x)^2} = -x^3\\sqrt{1 - x^2} = -f(x)$. Since $f(x)$ is an odd function integrated over symmetric limits $[-1, 1]$, the integral evaluates directly to 0."
+        "explanation": "For a line $y = mx + c$ to touch the ellipse $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$, the tangency condition is $c^2 = a^2 m^2 + b^2$. Here $m = 1$, $a^2 = 3$, $b^2 = 1$. So $c^2 = 3(1)^2 + 1 = 4 \\implies c = \\pm 2$."
+      },
+      {
+        "id": "math-kmc-6",
+        "subject": "Maths",
+        "topic": "Conic Sections (Hyperbola)",
+        "year": "KMC 2079 Set A",
+        "question": "The equation $x^2 = 5y^2 + 20$ represents a conic section. The eccentricity ($e$) of this conic section is:",
+        "options": [
+          "$e = 0$",
+          "$e = 1$",
+          "$e > 1$",
+          "$e < 1$"
+        ],
+        "correct": 2,
+        "explanation": "Rewriting $x^2 - 5y^2 = 20 \\implies \\frac{x^2}{20} - \\frac{y^2}{4} = 1$. This is the standard equation of a hyperbola ($\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$). The eccentricity of any hyperbola is always strictly greater than 1 ($e > 1$)."
+      },
+      {
+        "id": "math-kmc-7",
+        "subject": "Maths",
+        "topic": "3D Geometry (Direction Cosines)",
+        "year": "KMC 2079 Set A",
+        "question": "The direction cosines of a line equally inclined to the coordinate axes are:",
+        "options": [
+          "$\\pm \\frac{1}{\\sqrt{2}}, \\pm \\frac{1}{\\sqrt{2}}, \\pm \\frac{1}{\\sqrt{2}}$",
+          "$\\pm \\frac{1}{\\sqrt{3}}, \\pm \\frac{1}{\\sqrt{3}}, \\pm \\frac{1}{\\sqrt{3}}$",
+          "$\\pm \\frac{1}{2}, \\pm \\frac{1}{2}, \\pm \\frac{1}{2}$",
+          "$\\pm 1, \\pm 1, \\pm 1$"
+        ],
+        "correct": 1,
+        "explanation": "If a line is equally inclined to axes, $\\alpha = \\beta = \\gamma \\implies l = m = n$. Since $l^2 + m^2 + n^2 = 1$, we have $3l^2 = 1 \\implies l = \\pm \\frac{1}{\\sqrt{3}}$. Thus the direction cosines are $\\pm \\frac{1}{\\sqrt{3}}, \\pm \\frac{1}{\\sqrt{3}}, \\pm \\frac{1}{\\sqrt{3}}$."
+      },
+      {
+        "id": "math-kmc-8",
+        "subject": "Maths",
+        "topic": "3D Geometry (Angle Between Lines)",
+        "year": "KMC 2079 Set A",
+        "question": "The angle between the lines whose direction ratios are $(1, 2, 1)$ and $(2, 1, -1)$ is:",
+        "options": [
+          "$\\pi / 2$",
+          "$\\pi / 3$",
+          "$\\pi / 4$",
+          "$\\pi / 6$"
+        ],
+        "correct": 1,
+        "explanation": "$\\cos\\theta = \\frac{a_1 a_2 + b_1 b_2 + c_1 c_2}{\\sqrt{a_1^2+b_1^2+c_1^2}\\sqrt{a_2^2+b_2^2+c_2^2}} = \\frac{(1)(2) + (2)(1) + (1)(-1)}{\\sqrt{1+4+1}\\sqrt{4+1+1}} = \\frac{3}{\\sqrt{6}\\sqrt{6}} = \\frac{3}{6} = \\frac{1}{2}$. Therefore $\\theta = \\cos^{-1}(1/2) = \\frac{\\pi}{3}$."
       }
     ],
     "rapidFire": [
@@ -1232,102 +1145,6 @@ const STUDY_DATA = {
         "goldenRule": "Color in transition metal complexes arises from excitation of d-electrons between split $t_{2g}$ and $e_g$ levels ($d-d$ transition). In $Zn^{2+}$ ($3d^{10}$), all d-orbitals are fully occupied, leaving no vacant orbital for promotion. Hence, colorless!"
       },
       {
-        "id": "rf-b1",
-        "subject": "Biology",
-        "trapTitle": "DPD in Turgid vs Flaccid Cells",
-        "confusion": "When a plant cell is fully turgid, is its DPD zero or maximum?",
-        "question": "When a plant cell is placed in pure water and becomes fully turgid, its Diffusion Pressure Deficit (DPD) becomes:",
-        "options": [
-          "Equal to Osmotic Pressure ($OP$)",
-          "Equal to Turgor Pressure ($TP$)",
-          "Zero",
-          "Maximum"
-        ],
-        "correct": 2,
-        "whyStudentsFail": "Students confuse turgor pressure (which is maximum in a turgid cell) with suction force / DPD (which is zero).",
-        "goldenRule": "Formula: $DPD = OP - TP$. When fully turgid, wall pressure / turgor pressure equals osmotic pressure ($TP = OP$). Hence, $DPD = OP - OP = 0$. The cell is full and has ZERO demand for additional water!"
-      },
-      {
-        "id": "rf-b2",
-        "subject": "Biology",
-        "trapTitle": "Incomplete Dominance Ratio Order Trap",
-        "confusion": "Exam trick: 1:2:1 vs 1:1:2 in Mirabilis jalapa",
-        "question": "In a cross of red and white Mirabilis jalapa, what is the ratio of Red : White : Pink flowers in the F2 generation?",
-        "options": [
-          "1 : 2 : 1",
-          "1 : 1 : 2",
-          "3 : 1",
-          "2 : 1 : 1"
-        ],
-        "correct": 1,
-        "whyStudentsFail": "Almost 80% of students reflexively pick '1:2:1' because they memorize the order Red : Pink : White without reading the question prompt order!",
-        "goldenRule": "Read the prompt order carefully! Standard ratio is Red ($1$) : Pink ($2$) : White ($1$). When asked Red : White : Pink, it MUST be 1 : 1 : 2!"
-      },
-      {
-        "id": "rf-b3",
-        "subject": "Biology",
-        "trapTitle": "Genetic Code Ambiguity Trap",
-        "confusion": "Is the genetic code ambiguous or unambiguous?",
-        "question": "Which of the following is NOT a property of the universal genetic code?",
-        "options": [
-          "Triplet in nature",
-          "Commaless",
-          "Degenerate",
-          "Ambiguous"
-        ],
-        "correct": 3,
-        "whyStudentsFail": "Students confuse 'degenerate' (multiple codons code for 1 amino acid) with 'ambiguous' (one codon codes for multiple amino acids).",
-        "goldenRule": "The genetic code is strictly UNAMBIGUOUS: One codon codes for ONLY ONE specific amino acid (e.g., UUU codes only for Phenylalanine). It is never ambiguous!"
-      },
-      {
-        "id": "rf-b4",
-        "subject": "Biology",
-        "trapTitle": "Myelin Sheath Producer: CNS vs PNS",
-        "confusion": "Do Schwann cells myelinate the brain and spinal cord?",
-        "question": "Which glial cells produce the myelin sheath around axons inside the Central Nervous System (brain and spinal cord)?",
-        "options": [
-          "Schwann cells",
-          "Oligodendrocytes",
-          "Astrocytes",
-          "Microglia"
-        ],
-        "correct": 1,
-        "whyStudentsFail": "Textbooks emphasize Schwann cells when introducing neurons, so students forget oligodendrocytes in the CNS.",
-        "goldenRule": "PNS = Schwann cells (one cell wraps one axon segment). CNS = Oligodendrocytes (one cell sends processes to myelinate up to 50 axon segments!)."
-      },
-      {
-        "id": "rf-b5",
-        "subject": "Biology",
-        "trapTitle": "Infant Gastric Juice Constituents",
-        "confusion": "Does infant gastric juice contain amylase or pepsinogen?",
-        "question": "Which enzyme is NOT present in the gastric juice of human infants?",
-        "options": [
-          "Pepsinogen",
-          "Prorennin (Rennin)",
-          "Gastric Amylase",
-          "Gastric Lipase"
-        ],
-        "correct": 2,
-        "whyStudentsFail": "Students think carbohydrate digestion begins in the stomach.",
-        "goldenRule": "Gastric juice has NO amylase or carbohydrate-splitting enzymes (salivary amylase is inactivated by acid). Infant gastric juice contains Pepsinogen, Prorennin, and weak Gastric Lipase."
-      },
-      {
-        "id": "rf-b6",
-        "subject": "Biology",
-        "trapTitle": "Nitrogenous Waste in Aquatic Mammals (Whale)",
-        "confusion": "Since whales live in the ocean, are they ammonotelic?",
-        "question": "What is the primary nitrogenous excretory product of marine whales?",
-        "options": [
-          "Ammonia (Ammonotelic)",
-          "Urea (Ureotelic)",
-          "Uric Acid (Uricotelic)",
-          "Guanine (Guanotelic)"
-        ],
-        "correct": 1,
-        "whyStudentsFail": "Students assume that because a whale lives in water, it excretes ammonia like bony fish.",
-        "goldenRule": "Whales are mammals! All mammals possess a functional ornithine/urea cycle in the liver and are UREOTELIC (excrete urea), regardless of whether they live in water or on land."
-      },
-      {
         "id": "rf-m1",
         "subject": "Maths",
         "trapTitle": "Tangent vs Normal Slope",
@@ -1358,6 +1175,102 @@ const STUDY_DATA = {
         "correct": 0,
         "whyStudentsFail": "Students spend minutes trying to integrate $\\sin^5(x)$ using reduction formulas without checking that $\\sin^5(x)$ is odd.",
         "goldenRule": "Always check function parity on symmetric limits $[-a, a]$. If $f(-x) = -f(x)$, $\\int_{-a}^a f(x),dx = 0$ instantly!"
+      },
+      {
+        "id": "rf-m1",
+        "subject": "Maths",
+        "trapTitle": "Rolle's Theorem Discontinuity Trap",
+        "confusion": "If f(a) = f(b), does Rolle's theorem always guarantee f'(c) = 0?",
+        "question": "For $f(x) = \\frac{1}{x^2 - 1}$ on $[-2, 2]$, $f(-2) = f(2) = 1/3$. Can Rolle's theorem be applied here?",
+        "options": [
+          "Yes, because f(a) = f(b) = 1/3",
+          "No, because the function is discontinuous at x = 1 and x = -1 inside the interval",
+          "Yes, because f'(x) exists everywhere",
+          "Only if the interval is expanded to [-3, 3]"
+        ],
+        "correct": 1,
+        "whyStudentsFail": "Students only verify $f(a) = f(b)$ and forget that the function MUST be continuous on the entire closed interval $[a, b]$.",
+        "goldenRule": "Always check continuity first! If the denominator becomes 0 anywhere inside $[a, b]$, Rolle's Theorem fails immediately."
+      },
+      {
+        "id": "rf-m2",
+        "subject": "Maths",
+        "trapTitle": "Slope of Normal vs Tangent",
+        "confusion": "Is the normal slope just the negative of the tangent slope?",
+        "question": "If the slope of the tangent to a curve at a point is $m = 3$, what is the slope of the normal?",
+        "options": [
+          "$-3$",
+          "$1/3$",
+          "$-1/3$",
+          "$3$"
+        ],
+        "correct": 2,
+        "whyStudentsFail": "Students mix up negative reciprocal with simple negative ($-m$) or simple reciprocal ($1/m$).",
+        "goldenRule": "Tangent and normal are perpendicular: $m_1 \\times m_2 = -1 \\implies m_{normal} = -\\frac{1}{m_{tangent}}$."
+      },
+      {
+        "id": "rf-m3",
+        "subject": "Maths",
+        "trapTitle": "Counting Numbers with Distinct Digits",
+        "confusion": "Why is the total number of 9-digit numbers with distinct digits not 10! or 9!?",
+        "question": "How many 9-digit numbers can be formed using different digits (0 to 9)?",
+        "options": [
+          "$10!$",
+          "$9!$",
+          "$9 \\times 9!$",
+          "$10 \\times 9!$"
+        ],
+        "correct": 2,
+        "whyStudentsFail": "Students forget that the very first digit cannot be 0 (otherwise it becomes an 8-digit number!).",
+        "goldenRule": "First digit has 9 choices (1-9). The remaining 8 places are filled by remaining 9 digits in $P(9, 8) = 9!$ ways $\\implies 9 \\times 9!$."
+      },
+      {
+        "id": "rf-m4",
+        "subject": "Maths",
+        "trapTitle": "Implicit Derivative Symmetry",
+        "confusion": "Does differentiating $x^4 y^5 = (x+y)^9$ take long quotient rule steps?",
+        "question": "What is $\\frac{dy}{dx}$ for $x^4 y^5 = (x + y)^9$?",
+        "options": [
+          "$\\frac{4x}{5y}$",
+          "$\\frac{y}{x}$",
+          "$-\\frac{y}{x}$",
+          "$\\frac{x+y}{xy}$"
+        ],
+        "correct": 1,
+        "whyStudentsFail": "Students spend 10 minutes applying product and chain rules and make algebraic mistakes.",
+        "goldenRule": "Golden Shortcut: For any relation $x^p y^q = (x + y)^{p+q}$, the derivative $\\frac{dy}{dx}$ is always simply $\\frac{y}{x}$!"
+      },
+      {
+        "id": "rf-m5",
+        "subject": "Maths",
+        "trapTitle": "Direction Cosines Normalization",
+        "confusion": "Can any three numbers representing direction ratios serve as direction cosines?",
+        "question": "If a line is equally inclined to the three coordinate axes, its direction cosines are:",
+        "options": [
+          "$(1, 1, 1)$",
+          "$(\\pm 1/3, \\pm 1/3, \\pm 1/3)$",
+          "$(\\pm 1/\\sqrt{3}, \\pm 1/\\sqrt{3}, \\pm 1/\\sqrt{3})$",
+          "$(\\pm 1/2, \\pm 1/2, \\pm 1/2)$"
+        ],
+        "correct": 2,
+        "whyStudentsFail": "Students confuse direction ratios $(1, 1, 1)$ with direction cosines. Direction cosines must satisfy $l^2 + m^2 + n^2 = 1$.",
+        "goldenRule": "Always normalize direction ratios: $l = \\frac{a}{\\sqrt{a^2+b^2+c^2}}$. With $a=b=c=1$, $l = 1/\\sqrt{1+1+1} = 1/\\sqrt{3}$."
+      },
+      {
+        "id": "rf-m6",
+        "subject": "Maths",
+        "trapTitle": "Odd Function Definite Integral",
+        "confusion": "Do you need integration by parts when evaluating $\\int_{-a}^a x^3\\sqrt{1-x^2},dx$?",
+        "question": "What is the value of $\\int_{-1}^1 x^3\\sqrt{1 - x^2},dx$?",
+        "options": [
+          "Zero",
+          "$\\pi / 4$",
+          "$1/2$",
+          "$\\pi$"
+        ],
+        "correct": 0,
+        "whyStudentsFail": "Students waste time making trigonometric substitutions without checking that the integrand is an odd function.",
+        "goldenRule": "If limits are symmetric $[-a, a]$, test $f(-x)$. If $f(-x) = -f(x)$ (odd function), the integral is ZERO with no calculation needed!"
       }
     ]
   }
