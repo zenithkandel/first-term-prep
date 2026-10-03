@@ -1002,6 +1002,47 @@ header.app-header {
   opacity: 0.9;
 }
 
+.btn-secondary.active {
+  background: var(--accent-inverted) !important;
+  color: var(--text-inverse) !important;
+  border-color: var(--accent-inverted) !important;
+}
+
+/* All Traps Cheat Sheet View */
+.rf-all-traps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.trap-card-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 20px;
+  transition: border-color 0.2s ease;
+}
+
+.trap-card-item:hover {
+  border-color: var(--border-strong);
+}
+
+.trap-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.trap-card-q {
+  font-size: 0.96rem;
+  font-weight: 600;
+  margin-top: 8px;
+  margin-bottom: 14px;
+}
+
 /* Empty State & Utilities */
 .empty-state {
   text-align: center;

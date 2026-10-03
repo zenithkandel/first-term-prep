@@ -142,57 +142,75 @@
 
       <!-- SUB-SECTION 2B: Rapid-Fire Concept Clearers -->
       <div class="mcq-view" id="view-rapid-fire" style="display: none;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; flex-wrap: wrap; gap: 12px;">
+          <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-secondary);">Rapid-fire practice targeting common traps and student misconceptions:</span>
+          <div style="display: flex; gap: 8px;">
+            <button class="btn-secondary active" id="rf-view-quiz-btn" style="font-weight: 700;">⚡ Interactive Quiz</button>
+            <button class="btn-secondary" id="rf-view-list-btn">☰ All 18 Traps Cheat Sheet</button>
+          </div>
+        </div>
+
+        <!-- Quiz Arena -->
         <div class="rapid-fire-arena" id="rapid-fire-box">
-          
-          <div class="rf-top-bar">
-            <div class="rf-stats-row">
-              <span id="rf-counter">Question 1 of 18</span>
-              <span class="streak-tag" id="rf-streak-display">Streak: 0 🔥</span>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <button class="rf-timer-btn" id="rf-timer-toggle">Timer: Off</button>
-              <button class="btn-secondary" id="rf-shuffle-btn" style="padding: 4px 10px;">Shuffle</button>
-            </div>
-          </div>
-
-          <!-- Trap & Confusion Alert Box -->
-          <div class="rf-trap-banner">
-            <div class="rf-trap-type">
-              <span>⚠ TRAP CONCEPT</span> • <span id="rf-subject-tag">PHYSICS</span>
-            </div>
-            <h3 class="rf-trap-title" id="rf-trap-title">Loading trap...</h3>
-            <p class="rf-trap-confusion" id="rf-trap-confusion">Loading confusion...</p>
-          </div>
-
-          <!-- Question Prompt -->
-          <div class="rf-question-text" id="rf-question-prompt">
-            Loading question...
-          </div>
-
-          <!-- Options -->
-          <div class="rf-options-container" id="rf-options-list">
-            <!-- Rendered dynamically -->
-          </div>
-
-          <!-- Feedback Box (Hidden until answered) -->
-          <div class="rf-feedback-card" id="rf-feedback">
-            <div class="rf-fail-box">
-              <div class="rf-fail-title">Why Students Fail This:</div>
-              <div class="rf-fail-content" id="rf-why-fail">...</div>
+          <div id="rf-active-content">
+            <div class="rf-top-bar">
+              <div class="rf-stats-row">
+                <span id="rf-counter">Question 1 of 18</span>
+                <span class="streak-tag" id="rf-streak-display">Streak: 0 🔥</span>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button class="rf-timer-btn" id="rf-timer-toggle">Timer: Off</button>
+                <button class="btn-secondary" id="rf-shuffle-btn" style="padding: 4px 10px;">Shuffle</button>
+              </div>
             </div>
 
-            <div class="rf-rule-box">
-              <div class="rf-rule-title">The Golden Rule To Remember:</div>
-              <div class="rf-rule-content" id="rf-golden-rule">...</div>
+            <!-- Trap & Confusion Alert Box -->
+            <div class="rf-trap-banner">
+              <div class="rf-trap-type">
+                <span>⚠ TRAP CONCEPT</span> • <span id="rf-subject-tag">PHYSICS</span>
+              </div>
+              <h3 class="rf-trap-title" id="rf-trap-title">Loading trap...</h3>
+              <p class="rf-trap-confusion" id="rf-trap-confusion">Loading confusion...</p>
+            </div>
+
+            <!-- Question Prompt -->
+            <div class="rf-question-text" id="rf-question-prompt">
+              Loading question...
+            </div>
+
+            <!-- Options -->
+            <div class="rf-options-container" id="rf-options-list">
+              <!-- Rendered dynamically -->
+            </div>
+
+            <!-- Feedback Box (Hidden until answered) -->
+            <div class="rf-feedback-card" id="rf-feedback">
+              <div class="rf-fail-box">
+                <div class="rf-fail-title">Why Students Fail This:</div>
+                <div class="rf-fail-content" id="rf-why-fail">...</div>
+              </div>
+
+              <div class="rf-rule-box">
+                <div class="rf-rule-title">The Golden Rule To Remember:</div>
+                <div class="rf-rule-content" id="rf-golden-rule">...</div>
+              </div>
+            </div>
+
+            <!-- Navigation controls -->
+            <div class="rf-nav-actions">
+              <button class="btn-secondary" id="rf-prev-btn" disabled>← Previous</button>
+              <button class="btn-primary" id="rf-next-btn">Next Trap →</button>
             </div>
           </div>
 
-          <!-- Navigation controls -->
-          <div class="rf-nav-actions">
-            <button class="btn-secondary" id="rf-prev-btn" disabled>← Previous</button>
-            <button class="btn-primary" id="rf-next-btn">Next Trap →</button>
+          <div id="rf-empty-state" class="empty-state" style="display: none;">
+            No rapid-fire concept questions found for this subject.
           </div>
+        </div>
 
+        <!-- All Traps Cheat Sheet View -->
+        <div class="rf-all-traps-list" id="rf-all-traps-container" style="display: none;">
+          <!-- Rendered dynamically via app.js -->
         </div>
       </div>
 

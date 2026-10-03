@@ -417,12 +417,17 @@
 
   function renderRapidFireQuestion() {
     const list = STATE.rapidFire.items;
-    const arena = document.getElementById('rapid-fire-box');
-    if (!arena) return;
+    const activeContent = document.getElementById('rf-active-content');
+    const emptyState = document.getElementById('rf-empty-state');
+    if (!activeContent || !emptyState) return;
 
     if (list.length === 0) {
-      arena.innerHTML = `<div class="empty-state">No rapid fire concept questions for this subject.</div>`;
+      activeContent.style.display = 'none';
+      emptyState.style.display = 'block';
       return;
+    } else {
+      activeContent.style.display = 'block';
+      emptyState.style.display = 'none';
     }
 
     const item = list[STATE.rapidFire.currentIndex];
@@ -591,6 +596,53 @@
     }, 1000);
   }
 
+  function renderRapidFireCheatSheet() {
+    const container = document.getElementById('rf-all-traps-container');
+    if (!container) return;
+
+    let list = STUDY_DATA.mcqs.rapidFire || [];
+    if (STATE.currentSubject !== 'all') {
+      list = list.filter(item => item.subject.toLowerCase() === STATE.currentSubject);
+    }
+
+    if (list.length === 0) {
+      container.innerHTML = `<div class="empty-state">No traps found for this subject.</div>`;
+      return;
+    }
+
+    container.innerHTML = list.map((item, idx) => {
+      const correctOpt = item.options[item.correct];
+      return `
+        <div class="trap-card-item">
+          <div class="trap-card-header">
+            <div class="topic-badges">
+              <span class="badge badge-rep">TRAP #${idx + 1}</span>
+              <span class="badge badge-subject">${item.subject}</span>
+              <span class="badge badge-weight">${item.trapTitle}</span>
+            </div>
+          </div>
+          <div style="font-size: 0.88rem; font-style: italic; color: var(--text-secondary); margin-bottom: 8px;">
+            Common Misconception: "${item.confusion}"
+          </div>
+          <div class="trap-card-q">Q: ${item.question}</div>
+          <div style="background: var(--bg-secondary); border: 1px solid var(--border-subtle); padding: 8px 12px; border-radius: 4px; font-size: 0.85rem; margin-bottom: 12px;">
+            <strong style="color: var(--text-primary);">Correct Exam Answer:</strong> ${correctOpt}
+          </div>
+          <div class="rf-fail-box" style="margin-bottom: 10px;">
+            <div class="rf-fail-title">Why Students Fail This:</div>
+            <div class="rf-fail-content">${item.whyStudentsFail}</div>
+          </div>
+          <div class="rf-rule-box">
+            <div class="rf-rule-title">The Golden Rule To Remember:</div>
+            <div class="rf-rule-content">${item.goldenRule}</div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    triggerMathRender();
+  }
+
   // ==========================================
   // EVENT LISTENERS
   // ==========================================
@@ -612,6 +664,9 @@
         renderTopics();
         renderExamMCQs();
         setupRapidFire();
+        if (document.getElementById('rf-all-traps-container') && document.getElementById('rf-all-traps-container').style.display !== 'none') {
+          renderRapidFireCheatSheet();
+        }
       });
     });
 
@@ -649,6 +704,31 @@
       });
     }
 
+    // Rapid Fire View Toggles (Interactive Quiz vs All Traps List)
+    const quizViewBtn = document.getElementById('rf-view-quiz-btn');
+    const listViewBtn = document.getElementById('rf-view-list-btn');
+    const quizBox = document.getElementById('rapid-fire-box');
+    const listBox = document.getElementById('rf-all-traps-container');
+
+    if (quizViewBtn && listViewBtn) {
+      quizViewBtn.addEventListener('click', () => {
+        quizViewBtn.classList.add('active');
+        listViewBtn.classList.remove('active');
+        if (quizBox) quizBox.style.display = 'block';
+        if (listBox) listBox.style.display = 'none';
+      });
+
+      listViewBtn.addEventListener('click', () => {
+        listViewBtn.classList.add('active');
+        quizViewBtn.classList.remove('active');
+        if (quizBox) quizBox.style.display = 'none';
+        if (listBox) {
+          listBox.style.display = 'flex';
+          renderRapidFireCheatSheet();
+        }
+      });
+    }
+
     // Reset exam answers button
     const resetExamBtn = document.getElementById('reset-exam-mcqs-btn');
     if (resetExamBtn) resetExamBtn.addEventListener('click', resetExamAnswers);
@@ -683,6 +763,8 @@
       } catch (err) {
         console.warn("KaTeX rendering note:", err);
       }
+    } else {
+      setTimeout(triggerMathRender, 300);
     }
   }
 
