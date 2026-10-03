@@ -106,7 +106,7 @@
 
     if (bar) bar.style.width = `${pct}%`;
     if (pctLabel) pctLabel.textContent = `${pct}%`;
-    if (detailLabel) detailLabel.textContent = `${masteredCount} of ${totalCount} topics mastered`;
+    if (detailLabel) detailLabel.textContent = `${masteredCount} of ${totalCount} topics reviewed`;
 
     // Mini stats
     const subs = ['physics', 'chemistry', 'biology'];
@@ -123,7 +123,7 @@
     const highRep = allTopics.filter(t => t.repetitionCount >= 5);
     const highRepMastered = highRep.filter(t => STATE.masteredTopics.has(t.id)).length;
     const elHigh = document.getElementById('stat-high-rep');
-    if (elHigh) elHigh.textContent = `${highRepMastered} / ${highRep.length} Covered`;
+    if (elHigh) elHigh.textContent = `${highRepMastered} / ${highRep.length} Done`;
   }
 
   function resetAllProgress() {
@@ -169,15 +169,14 @@
 
     container.innerHTML = topics.map((t, idx) => {
       const isMastered = STATE.masteredTopics.has(t.id);
-      const repLabel = `${t.repetitionCount}x Repeated in Past Exams`;
-      const subjectName = t.subjectKey.toUpperCase();
+      const subjectName = t.subjectKey.charAt(0).toUpperCase() + t.subjectKey.slice(1);
 
       return `
         <article class="topic-card ${isMastered ? 'mastered' : ''}" id="topic-card-${t.id}">
           <div class="topic-header">
             <div class="topic-title-area">
               <div class="topic-badges">
-                <span class="badge badge-rep">#${idx + 1} • ${repLabel}</span>
+                <span class="badge badge-rep">Repeated ${t.repetitionCount}x</span>
                 <span class="badge badge-subject">${subjectName}</span>
                 <span class="badge badge-weight">${t.weightage}</span>
               </div>
@@ -187,16 +186,16 @@
               </div>
             </div>
 
-            <label class="mastery-checkbox-label" title="Toggle mastery status">
+            <label class="mastery-checkbox-label" title="Mark this topic as reviewed">
               <input type="checkbox" ${isMastered ? 'checked' : ''} data-topic-id="${t.id}" class="mastery-checkbox">
-              <span>${isMastered ? 'Mastered ✓' : 'Mark Mastered'}</span>
+              <span>${isMastered ? 'Done ✓' : 'Mark as done'}</span>
             </label>
           </div>
 
           <p class="topic-summary">${t.summary}</p>
 
           <div class="key-concepts-box">
-            <div class="key-concepts-header">High-Yield Core Formulas & Principles:</div>
+            <div class="key-concepts-header">Key formulas and points:</div>
             <ul>
               ${t.keyConcepts.map(c => `<li>${c}</li>`).join('')}
             </ul>
@@ -205,7 +204,7 @@
           <!-- Collapsible Questions Accordion -->
           <div class="questions-accordion">
             <button class="accordion-toggle-btn" data-target="acc-${t.id}">
-              <span>View Past Exam Questions & Model Solutions (${t.questions ? t.questions.length : 0})</span>
+              <span>Exam questions & answers (${t.questions ? t.questions.length : 0})</span>
               <span class="accordion-arrow">▼</span>
             </button>
             <div class="accordion-content" id="acc-${t.id}">
@@ -217,7 +216,7 @@
                   </div>
                   <div class="q-text">${q.question}</div>
                   <div class="q-answer-box">
-                    <div class="q-answer-title">Model Answer / Step-by-Step Solution:</div>
+                    <div class="q-answer-title">Answer:</div>
                     <div class="q-answer-text">${q.answer}</div>
                   </div>
                 </div>
@@ -236,7 +235,7 @@
         // update checkbox label text
         const span = e.target.parentElement.querySelector('span');
         if (span) {
-          span.textContent = e.target.checked ? 'Mastered ✓' : 'Mark Mastered';
+          span.textContent = e.target.checked ? 'Done ✓' : 'Mark as done';
         }
       });
     });
@@ -317,7 +316,7 @@
           </div>
 
           <div class="mcq-explanation-box ${hasAnswered ? 'show' : ''}" id="expl-${q.id}">
-            <div class="mcq-explanation-header">Verified Answer & Detailed Analysis:</div>
+            <div class="mcq-explanation-header">Explanation:</div>
             <div style="line-height: 1.55;">${q.explanation}</div>
           </div>
         </div>
@@ -437,7 +436,7 @@
     const counter = document.getElementById('rf-counter');
     const streakEl = document.getElementById('rf-streak-display');
     if (counter) counter.textContent = `Question ${STATE.rapidFire.currentIndex + 1} of ${list.length}`;
-    if (streakEl) streakEl.textContent = `Streak: ${STATE.rapidFire.streak} 🔥`;
+    if (streakEl) streakEl.textContent = `Streak: ${STATE.rapidFire.streak}`;
 
     // Subject tag
     const subTag = document.getElementById('rf-subject-tag');
@@ -447,7 +446,7 @@
     const trapTitle = document.getElementById('rf-trap-title');
     const trapConfusion = document.getElementById('rf-trap-confusion');
     if (trapTitle) trapTitle.textContent = item.trapTitle;
-    if (trapConfusion) trapConfusion.textContent = `Student Confusion: "${item.confusion}"`;
+    if (trapConfusion) trapConfusion.textContent = `Common doubt: "${item.confusion}"`;
 
     // Question
     const qPrompt = document.getElementById('rf-question-prompt');
@@ -483,7 +482,7 @@
     const nextBtn = document.getElementById('rf-next-btn');
     if (prevBtn) prevBtn.disabled = STATE.rapidFire.currentIndex === 0;
     if (nextBtn) {
-      nextBtn.textContent = STATE.rapidFire.currentIndex === list.length - 1 ? 'Finish Drill 🏁' : 'Next Trap →';
+      nextBtn.textContent = STATE.rapidFire.currentIndex === list.length - 1 ? 'Finish Quiz' : 'Next Question →';
     }
 
     // Timer reset if active
@@ -511,7 +510,7 @@
     }
 
     const streakEl = document.getElementById('rf-streak-display');
-    if (streakEl) streakEl.textContent = `Streak: ${STATE.rapidFire.streak} 🔥`;
+    if (streakEl) streakEl.textContent = `Streak: ${STATE.rapidFire.streak}`;
 
     optButtons.forEach((btn, idx) => {
       btn.disabled = true;
